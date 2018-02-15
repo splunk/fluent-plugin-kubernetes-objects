@@ -1,0 +1,1615 @@
+{
+  "kind": "NodeList",
+  "apiVersion": "v1",
+  "metadata": {
+    "selfLink": "/api/v1/nodes",
+    "resourceVersion": "6619613"
+  },
+  "items": [
+    {
+      "metadata": {
+        "name": "k8s-agentpool1-10851795-0",
+        "selfLink": "/api/v1/nodes/k8s-agentpool1-10851795-0",
+        "uid": "24df62b8-d150-11e7-854f-000d3af99127",
+        "resourceVersion": "6619612",
+        "creationTimestamp": "2017-11-24T19:46:20Z",
+        "labels": {
+          "agentpool": "agentpool1",
+          "beta.kubernetes.io/arch": "amd64",
+          "beta.kubernetes.io/instance-type": "Standard_D2_v2",
+          "beta.kubernetes.io/os": "linux",
+          "failure-domain.beta.kubernetes.io/region": "westus2",
+          "failure-domain.beta.kubernetes.io/zone": "1",
+          "kubernetes.azure.com/cluster": "pr45-zliang-k8s-5a1875a0",
+          "kubernetes.io/hostname": "k8s-agentpool1-10851795-0",
+          "kubernetes.io/role": "agent"
+        },
+        "annotations": {
+          "node.alpha.kubernetes.io/ttl": "0",
+          "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+        }
+      },
+      "spec": {
+        "podCIDR": "10.244.2.0/24",
+        "externalID": "/subscriptions/ae4ab7c9-dcdf-4427-9729-48e8c7551be9/resourceGroups/pr45-zliang-k8s-5a1875a0/providers/Microsoft.Compute/virtualMachines/k8s-agentpool1-10851795-0",
+        "providerID": "azure:///subscriptions/ae4ab7c9-dcdf-4427-9729-48e8c7551be9/resourceGroups/pr45-zliang-k8s-5a1875a0/providers/Microsoft.Compute/virtualMachines/k8s-agentpool1-10851795-0"
+      },
+      "status": {
+        "capacity": {
+          "alpha.kubernetes.io/nvidia-gpu": "0",
+          "cpu": "2",
+          "memory": "7123036Ki",
+          "pods": "110"
+        },
+        "allocatable": {
+          "alpha.kubernetes.io/nvidia-gpu": "0",
+          "cpu": "2",
+          "memory": "7020636Ki",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "NetworkUnavailable",
+            "status": "False",
+            "lastHeartbeatTime": "2017-11-24T19:46:34Z",
+            "lastTransitionTime": "2017-11-24T19:46:34Z",
+            "reason": "RouteCreated",
+            "message": "RouteController created a route"
+          },
+          {
+            "type": "OutOfDisk",
+            "status": "False",
+            "lastHeartbeatTime": "2018-01-19T09:01:25Z",
+            "lastTransitionTime": "2018-01-10T01:16:07Z",
+            "reason": "KubeletHasSufficientDisk",
+            "message": "kubelet has sufficient disk space available"
+          },
+          {
+            "type": "MemoryPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2018-01-19T09:01:25Z",
+            "lastTransitionTime": "2018-01-10T01:16:07Z",
+            "reason": "KubeletHasSufficientMemory",
+            "message": "kubelet has sufficient memory available"
+          },
+          {
+            "type": "DiskPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2018-01-19T09:01:25Z",
+            "lastTransitionTime": "2018-01-10T01:16:07Z",
+            "reason": "KubeletHasNoDiskPressure",
+            "message": "kubelet has no disk pressure"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastHeartbeatTime": "2018-01-19T09:01:25Z",
+            "lastTransitionTime": "2018-01-10T01:16:07Z",
+            "reason": "KubeletReady",
+            "message": "kubelet is posting ready status"
+          }
+        ],
+        "addresses": [
+          {
+            "type": "InternalIP",
+            "address": "10.240.0.4"
+          },
+          {
+            "type": "Hostname",
+            "address": "k8s-agentpool1-10851795-0"
+          }
+        ],
+        "daemonEndpoints": {
+          "kubeletEndpoint": {
+            "Port": 10250
+          }
+        },
+        "nodeInfo": {
+          "machineID": "40beb5eb909e171860ceee669da56e1d",
+          "systemUUID": "0C56605B-B0C7-A748-9B5A-2D380BDFF780",
+          "bootID": "c54afb54-7470-42b7-b31f-2757570e0a12",
+          "kernelVersion": "4.11.0-1016-azure",
+          "osImage": "Debian GNU/Linux 8 (jessie)",
+          "containerRuntimeVersion": "docker://1.12.6",
+          "kubeletVersion": "v1.7.9",
+          "kubeProxyVersion": "v1.7.9",
+          "operatingSystem": "linux",
+          "architecture": "amd64"
+        },
+        "images": [
+          {
+            "names": [
+              "gcrio.azureedge.net/google_containers/hyperkube-amd64@sha256:78ee293ddf7c44ea960c43dff0ae6cbc61d6537d41056609fee0750a3e3800e4",
+              "gcrio.azureedge.net/google_containers/hyperkube-amd64:v1.7.9"
+            ],
+            "sizeBytes": 615502769
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:41d9d644e43544eb1c82464a4c067dca01daa99efd9ebe7d93b64660b8da4686",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.32"
+            ],
+            "sizeBytes": 251282123
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:6c8d1a2ddbf7bef2990ad3058f5da23c922e7fa942d655bd91b1df264a284cca",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.31"
+            ],
+            "sizeBytes": 251282059
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:dd4aa99c9df47eb0cb05e8cabb552f7271dee9825689ab0241380eccd8b2b620",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.30"
+            ],
+            "sizeBytes": 251282037
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:cb8f42ab37d13477e7c6a0deafd3c28a518d6e5b5c4db2fa24dac607946091d4",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.29"
+            ],
+            "sizeBytes": 251282033
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:3d54bd375545be9952bcc598a882520af72b75a26ce054865314604cc2d954ff",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.34"
+            ],
+            "sizeBytes": 251281974
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:44b72f4adaa2a051828735c37c4e720c7b9e7008d84d63625bf2b9efe4c7c31e",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.33"
+            ],
+            "sizeBytes": 251281968
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:17cde5ddd68040ce6636344c59d0ee8049fdb5987b8aee65e10fc28ea0c9ca91",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.28"
+            ],
+            "sizeBytes": 251281958
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:4339c160a2df4303d02de044ffa6e43bcc0f11149ab1a1129da8fec8a16eb04a",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha2.01"
+            ],
+            "sizeBytes": 251281877
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:a05422ae1bff1dd719ea93dcdf7587e617d19eed992c1fa250d75e99dd3849d6",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha2.00"
+            ],
+            "sizeBytes": 251281827
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:56bfe055bb412fb9fba953d8b9504c04b1c5c6f4c14c25a57a29e3e9b451cdbf",
+              "gimil/splunk-fluentd-kubernetes-daemonset:test-3"
+            ],
+            "sizeBytes": 251259823
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:a2ea1993f4845df9262286b07100f4fc4bb296896fc60e57eddd1c5d63636057",
+              "gimil/splunk-fluentd-kubernetes-daemonset:test-2"
+            ],
+            "sizeBytes": 251259822
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:830f8b2877cac898b59423936a11d30cbd80dcd4082eea98f173f0fd5d360655",
+              "gimil/splunk-fluentd-kubernetes-daemonset:test-1"
+            ],
+            "sizeBytes": 251259727
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:3882db70ab14e21b0c9e4caf88783fd465e0db5c592525707d828aa599a26c9f",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.6"
+            ],
+            "sizeBytes": 251259192
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:f9695f26a6babe8dcbd6330b0fbb12c440d623866812ae5087463c244e52bc0c",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.38"
+            ],
+            "sizeBytes": 251259157
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:39fcf27b26a81c61e7c78cd1270acf98f2ebcd09e916afe0f13aa612e4ec0016",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.5"
+            ],
+            "sizeBytes": 251259154
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:7e4380fbbece6129375ef16c58c9698724184b8f6bcb58f3baaf6295732741b3",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.24"
+            ],
+            "sizeBytes": 251259145
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:1ee6d10f6e56a6aee97df5deeea273f739f7eb45489f2ce8b1088c295584b9f0",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.39"
+            ],
+            "sizeBytes": 251259140
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:bd96a23d04f8b5e60acaa69217d7da6aad880ddfd3edcee7ae0fddb9044713ed",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.1"
+            ],
+            "sizeBytes": 251259133
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:1cda67df8840c4e1e99ae031fe6ec68279c43304a86d2e75ae3928d092f94f26",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.2"
+            ],
+            "sizeBytes": 251259132
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:ba369cf88ac0b74c48a3fdc61cbc762d9579089b1a148412e7b1f1115104ea49",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.25"
+            ],
+            "sizeBytes": 251259129
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:da8c1fbbda489fb18281dabffd3486a60b01cd04ff46f2ae0b4ea033c3a60fef",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.3"
+            ],
+            "sizeBytes": 251259124
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:0628c82f63ac1895cf3c6354578ee3a6b19bbc27c55cdfb7897d7b20a3010947",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.0"
+            ],
+            "sizeBytes": 251259123
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:c30ad83304d6771519f54c1b328f56c9c6bd58f1d6fa341715606ea7a8092e5c",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.4"
+            ],
+            "sizeBytes": 251259123
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:a9cb1f73c5614177e8ea26fbf3a067cc6cf4e05a0980a3982326628ef24a4345",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.21"
+            ],
+            "sizeBytes": 251259111
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:b5c59e136e1eea6db9dc8b77a2918b6ac01f2749cabed9d3b753cb3e5b848578",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.27"
+            ],
+            "sizeBytes": 251259097
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:547bbde1dd1762a844f18763556df2d9c73b470f608a433cf5d12d702702e5ef",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.22",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.23"
+            ],
+            "sizeBytes": 251259028
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:3fe22a8afad3347c191f4b8943f21ba96ae10929e3ceb0e580ae613d4f5a8a2e",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.34"
+            ],
+            "sizeBytes": 251259025
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:f7ff5af8eff48f05e215a1be343218d3ab05223f79ee08692e3069db8fdab3cf",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.26"
+            ],
+            "sizeBytes": 251259020
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:3b1fce05ae1946e1dd0e6a2fb0333e5fd117c5fbd81ab86f53f4322af1adbbf7",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.35"
+            ],
+            "sizeBytes": 251258908
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:47f25b1a8cf90a8a9ab2b57741c33054a49eaa69cef7b82b16cc733e5dee955a",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.37"
+            ],
+            "sizeBytes": 251258892
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:aff8d1f298f3e93cb33ed6018412ff3313f3991b1b7c67ba997ab2681e8c03f0",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.36"
+            ],
+            "sizeBytes": 251258888
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:bdd13d35cc3198830735e44e7ae145c3eda4bab58fb3ae1f9f502ecbfb01b6d0",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.30"
+            ],
+            "sizeBytes": 251258853
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:2584f02334bc5d48169697ae5aa614e40842d695151f75bc62ecc86618f38a67",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.32"
+            ],
+            "sizeBytes": 251258850
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:91273a0fc68ec08fe56ea02b81277481283a1deb0df0b96f2e195d14d1e1aee5",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.31"
+            ],
+            "sizeBytes": 251258849
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:f7f157a33bca5cfb11d53775d5eb1a2027594e0fcba931c8d70f9bd35446a54d",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.33"
+            ],
+            "sizeBytes": 251258776
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:6bda95756515eee9c7d2797fbc61be886c00e4b594e1ef1961876f480096393b",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.10"
+            ],
+            "sizeBytes": 251258452
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:02cbdd6c3449782a7c0f5e113e66fbd490c321f1be28e3340b7e9728500ab6eb",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.9"
+            ],
+            "sizeBytes": 251258419
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:2af4f54741690f99a5ef5095ee94fda5a89e8a1092725f55d62fa8fa26d4d607",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.7"
+            ],
+            "sizeBytes": 251258345
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:686de691b932a15cc0dde1426408f62c59e26ebcaf5b580923ae3c46bf153420",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.8"
+            ],
+            "sizeBytes": 251258338
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:2f3436c141a673f7a53c9ae71c5772c8f6c169ab5d1b8f0c57790938b35da943",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.25"
+            ],
+            "sizeBytes": 251257791
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:878eb6c2da7eca5e6aa5a50eec371dbf5e14baefc65bcbedadc7941a9b8d5845",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.24"
+            ],
+            "sizeBytes": 251257743
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:971ecc2ce270cbd6332980b7e63c9aad968c23e16a4e021f5ae6c52baef5638a",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.27"
+            ],
+            "sizeBytes": 251257720
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:59a61098625eeaf737e7c821fafcce7e8dac4b9910e489ac6d7be8e13128f7f0",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.26"
+            ],
+            "sizeBytes": 251257696
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:06782a6ab041ebf177c34c6bb130c0fcb17ca0b6143b751216189c29b097b4da",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.22"
+            ],
+            "sizeBytes": 251257623
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:754f68da9b81821fbbbd4e77d76cebf157d6c76d31f1cdeed9ead76c21a61a8d",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.23"
+            ],
+            "sizeBytes": 251257623
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:685ae21474f5b18a9dba5174d3d1d83754068ed19fffbf41707f3fac7a8cda45",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.21"
+            ],
+            "sizeBytes": 251257622
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:7b0359ecf8d729dae1d74ccad6ef2c93540c4c7e0baf309eacbcbb38a7f808d7",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.20"
+            ],
+            "sizeBytes": 251257559
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:db1eb715b51675c35cb499641273d072a63987263995fc4c7cf39a61e64f8ade",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.18"
+            ],
+            "sizeBytes": 251257357
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:433f846dcccb7ab4050095fac2c08c49a182b79c0f30c497c4e8371128357c45",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.13"
+            ],
+            "sizeBytes": 251257357
+          }
+        ]
+      }
+    },
+    {
+      "metadata": {
+        "name": "k8s-agentpool1-10851795-1",
+        "selfLink": "/api/v1/nodes/k8s-agentpool1-10851795-1",
+        "uid": "233191e6-d150-11e7-854f-000d3af99127",
+        "resourceVersion": "6619606",
+        "creationTimestamp": "2017-11-24T19:46:17Z",
+        "labels": {
+          "agentpool": "agentpool1",
+          "beta.kubernetes.io/arch": "amd64",
+          "beta.kubernetes.io/instance-type": "Standard_D2_v2",
+          "beta.kubernetes.io/os": "linux",
+          "failure-domain.beta.kubernetes.io/region": "westus2",
+          "failure-domain.beta.kubernetes.io/zone": "2",
+          "kubernetes.azure.com/cluster": "pr45-zliang-k8s-5a1875a0",
+          "kubernetes.io/hostname": "k8s-agentpool1-10851795-1",
+          "kubernetes.io/role": "agent"
+        },
+        "annotations": {
+          "node.alpha.kubernetes.io/ttl": "0",
+          "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+        }
+      },
+      "spec": {
+        "podCIDR": "10.244.1.0/24",
+        "externalID": "/subscriptions/ae4ab7c9-dcdf-4427-9729-48e8c7551be9/resourceGroups/pr45-zliang-k8s-5a1875a0/providers/Microsoft.Compute/virtualMachines/k8s-agentpool1-10851795-1",
+        "providerID": "azure:///subscriptions/ae4ab7c9-dcdf-4427-9729-48e8c7551be9/resourceGroups/pr45-zliang-k8s-5a1875a0/providers/Microsoft.Compute/virtualMachines/k8s-agentpool1-10851795-1"
+      },
+      "status": {
+        "capacity": {
+          "alpha.kubernetes.io/nvidia-gpu": "0",
+          "cpu": "2",
+          "memory": "7123036Ki",
+          "pods": "110"
+        },
+        "allocatable": {
+          "alpha.kubernetes.io/nvidia-gpu": "0",
+          "cpu": "2",
+          "memory": "7020636Ki",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "NetworkUnavailable",
+            "status": "False",
+            "lastHeartbeatTime": "2017-11-24T19:46:33Z",
+            "lastTransitionTime": "2017-11-24T19:46:33Z",
+            "reason": "RouteCreated",
+            "message": "RouteController created a route"
+          },
+          {
+            "type": "OutOfDisk",
+            "status": "False",
+            "lastHeartbeatTime": "2018-01-19T09:01:20Z",
+            "lastTransitionTime": "2018-01-09T11:28:43Z",
+            "reason": "KubeletHasSufficientDisk",
+            "message": "kubelet has sufficient disk space available"
+          },
+          {
+            "type": "MemoryPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2018-01-19T09:01:20Z",
+            "lastTransitionTime": "2018-01-09T11:28:43Z",
+            "reason": "KubeletHasSufficientMemory",
+            "message": "kubelet has sufficient memory available"
+          },
+          {
+            "type": "DiskPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2018-01-19T09:01:20Z",
+            "lastTransitionTime": "2018-01-09T11:28:43Z",
+            "reason": "KubeletHasNoDiskPressure",
+            "message": "kubelet has no disk pressure"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastHeartbeatTime": "2018-01-19T09:01:20Z",
+            "lastTransitionTime": "2018-01-09T11:28:43Z",
+            "reason": "KubeletReady",
+            "message": "kubelet is posting ready status"
+          }
+        ],
+        "addresses": [
+          {
+            "type": "InternalIP",
+            "address": "10.240.0.6"
+          },
+          {
+            "type": "Hostname",
+            "address": "k8s-agentpool1-10851795-1"
+          }
+        ],
+        "daemonEndpoints": {
+          "kubeletEndpoint": {
+            "Port": 10250
+          }
+        },
+        "nodeInfo": {
+          "machineID": "40beb5eb909e171860ceee669da56e1d",
+          "systemUUID": "7361205E-2A75-F246-A15B-9F2D3205ECCD",
+          "bootID": "eee64776-8672-48d4-9a60-e12e560aaa86",
+          "kernelVersion": "4.11.0-1016-azure",
+          "osImage": "Debian GNU/Linux 8 (jessie)",
+          "containerRuntimeVersion": "docker://1.12.6",
+          "kubeletVersion": "v1.7.9",
+          "kubeProxyVersion": "v1.7.9",
+          "operatingSystem": "linux",
+          "architecture": "amd64"
+        },
+        "images": [
+          {
+            "names": [
+              "gcrio.azureedge.net/google_containers/hyperkube-amd64@sha256:78ee293ddf7c44ea960c43dff0ae6cbc61d6537d41056609fee0750a3e3800e4",
+              "gcrio.azureedge.net/google_containers/hyperkube-amd64:v1.7.9"
+            ],
+            "sizeBytes": 615502769
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:41d9d644e43544eb1c82464a4c067dca01daa99efd9ebe7d93b64660b8da4686",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.32"
+            ],
+            "sizeBytes": 251282123
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:6c8d1a2ddbf7bef2990ad3058f5da23c922e7fa942d655bd91b1df264a284cca",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.31"
+            ],
+            "sizeBytes": 251282059
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:dd4aa99c9df47eb0cb05e8cabb552f7271dee9825689ab0241380eccd8b2b620",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.30"
+            ],
+            "sizeBytes": 251282037
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:cb8f42ab37d13477e7c6a0deafd3c28a518d6e5b5c4db2fa24dac607946091d4",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.29"
+            ],
+            "sizeBytes": 251282033
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:3d54bd375545be9952bcc598a882520af72b75a26ce054865314604cc2d954ff",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.34"
+            ],
+            "sizeBytes": 251281974
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:44b72f4adaa2a051828735c37c4e720c7b9e7008d84d63625bf2b9efe4c7c31e",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.33"
+            ],
+            "sizeBytes": 251281968
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:17cde5ddd68040ce6636344c59d0ee8049fdb5987b8aee65e10fc28ea0c9ca91",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.28"
+            ],
+            "sizeBytes": 251281958
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:4339c160a2df4303d02de044ffa6e43bcc0f11149ab1a1129da8fec8a16eb04a",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha2.01"
+            ],
+            "sizeBytes": 251281877
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:a05422ae1bff1dd719ea93dcdf7587e617d19eed992c1fa250d75e99dd3849d6",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha2.00"
+            ],
+            "sizeBytes": 251281827
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:56bfe055bb412fb9fba953d8b9504c04b1c5c6f4c14c25a57a29e3e9b451cdbf",
+              "gimil/splunk-fluentd-kubernetes-daemonset:test-3"
+            ],
+            "sizeBytes": 251259823
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:a2ea1993f4845df9262286b07100f4fc4bb296896fc60e57eddd1c5d63636057",
+              "gimil/splunk-fluentd-kubernetes-daemonset:test-2"
+            ],
+            "sizeBytes": 251259822
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:830f8b2877cac898b59423936a11d30cbd80dcd4082eea98f173f0fd5d360655",
+              "gimil/splunk-fluentd-kubernetes-daemonset:test-1"
+            ],
+            "sizeBytes": 251259727
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:3882db70ab14e21b0c9e4caf88783fd465e0db5c592525707d828aa599a26c9f",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.6"
+            ],
+            "sizeBytes": 251259192
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:f9695f26a6babe8dcbd6330b0fbb12c440d623866812ae5087463c244e52bc0c",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.38"
+            ],
+            "sizeBytes": 251259157
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:39fcf27b26a81c61e7c78cd1270acf98f2ebcd09e916afe0f13aa612e4ec0016",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.5"
+            ],
+            "sizeBytes": 251259154
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:7e4380fbbece6129375ef16c58c9698724184b8f6bcb58f3baaf6295732741b3",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.24"
+            ],
+            "sizeBytes": 251259145
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:1ee6d10f6e56a6aee97df5deeea273f739f7eb45489f2ce8b1088c295584b9f0",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.39"
+            ],
+            "sizeBytes": 251259140
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:bd96a23d04f8b5e60acaa69217d7da6aad880ddfd3edcee7ae0fddb9044713ed",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.1"
+            ],
+            "sizeBytes": 251259133
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:1cda67df8840c4e1e99ae031fe6ec68279c43304a86d2e75ae3928d092f94f26",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.2"
+            ],
+            "sizeBytes": 251259132
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:ba369cf88ac0b74c48a3fdc61cbc762d9579089b1a148412e7b1f1115104ea49",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.25"
+            ],
+            "sizeBytes": 251259129
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:da8c1fbbda489fb18281dabffd3486a60b01cd04ff46f2ae0b4ea033c3a60fef",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.3"
+            ],
+            "sizeBytes": 251259124
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:c30ad83304d6771519f54c1b328f56c9c6bd58f1d6fa341715606ea7a8092e5c",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.4"
+            ],
+            "sizeBytes": 251259123
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:0628c82f63ac1895cf3c6354578ee3a6b19bbc27c55cdfb7897d7b20a3010947",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.0"
+            ],
+            "sizeBytes": 251259123
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:a9cb1f73c5614177e8ea26fbf3a067cc6cf4e05a0980a3982326628ef24a4345",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.21"
+            ],
+            "sizeBytes": 251259111
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:b5c59e136e1eea6db9dc8b77a2918b6ac01f2749cabed9d3b753cb3e5b848578",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.27"
+            ],
+            "sizeBytes": 251259097
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:547bbde1dd1762a844f18763556df2d9c73b470f608a433cf5d12d702702e5ef",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.22",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.23"
+            ],
+            "sizeBytes": 251259028
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:3fe22a8afad3347c191f4b8943f21ba96ae10929e3ceb0e580ae613d4f5a8a2e",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.34"
+            ],
+            "sizeBytes": 251259025
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:f7ff5af8eff48f05e215a1be343218d3ab05223f79ee08692e3069db8fdab3cf",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.26"
+            ],
+            "sizeBytes": 251259020
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:3b1fce05ae1946e1dd0e6a2fb0333e5fd117c5fbd81ab86f53f4322af1adbbf7",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.35"
+            ],
+            "sizeBytes": 251258908
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:47f25b1a8cf90a8a9ab2b57741c33054a49eaa69cef7b82b16cc733e5dee955a",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.37"
+            ],
+            "sizeBytes": 251258892
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:aff8d1f298f3e93cb33ed6018412ff3313f3991b1b7c67ba997ab2681e8c03f0",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.36"
+            ],
+            "sizeBytes": 251258888
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:bdd13d35cc3198830735e44e7ae145c3eda4bab58fb3ae1f9f502ecbfb01b6d0",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.30"
+            ],
+            "sizeBytes": 251258853
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:2584f02334bc5d48169697ae5aa614e40842d695151f75bc62ecc86618f38a67",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.32"
+            ],
+            "sizeBytes": 251258850
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:91273a0fc68ec08fe56ea02b81277481283a1deb0df0b96f2e195d14d1e1aee5",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.31"
+            ],
+            "sizeBytes": 251258849
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:f7f157a33bca5cfb11d53775d5eb1a2027594e0fcba931c8d70f9bd35446a54d",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.33"
+            ],
+            "sizeBytes": 251258776
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:6bda95756515eee9c7d2797fbc61be886c00e4b594e1ef1961876f480096393b",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.10"
+            ],
+            "sizeBytes": 251258452
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:02cbdd6c3449782a7c0f5e113e66fbd490c321f1be28e3340b7e9728500ab6eb",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.9"
+            ],
+            "sizeBytes": 251258419
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:2af4f54741690f99a5ef5095ee94fda5a89e8a1092725f55d62fa8fa26d4d607",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.7"
+            ],
+            "sizeBytes": 251258345
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:686de691b932a15cc0dde1426408f62c59e26ebcaf5b580923ae3c46bf153420",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.8"
+            ],
+            "sizeBytes": 251258338
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:2f3436c141a673f7a53c9ae71c5772c8f6c169ab5d1b8f0c57790938b35da943",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.25"
+            ],
+            "sizeBytes": 251257791
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:878eb6c2da7eca5e6aa5a50eec371dbf5e14baefc65bcbedadc7941a9b8d5845",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.24"
+            ],
+            "sizeBytes": 251257743
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:971ecc2ce270cbd6332980b7e63c9aad968c23e16a4e021f5ae6c52baef5638a",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.27"
+            ],
+            "sizeBytes": 251257720
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:59a61098625eeaf737e7c821fafcce7e8dac4b9910e489ac6d7be8e13128f7f0",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.26"
+            ],
+            "sizeBytes": 251257696
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:06782a6ab041ebf177c34c6bb130c0fcb17ca0b6143b751216189c29b097b4da",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.22"
+            ],
+            "sizeBytes": 251257623
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:754f68da9b81821fbbbd4e77d76cebf157d6c76d31f1cdeed9ead76c21a61a8d",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.23"
+            ],
+            "sizeBytes": 251257623
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:685ae21474f5b18a9dba5174d3d1d83754068ed19fffbf41707f3fac7a8cda45",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.21"
+            ],
+            "sizeBytes": 251257622
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:7b0359ecf8d729dae1d74ccad6ef2c93540c4c7e0baf309eacbcbb38a7f808d7",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.20"
+            ],
+            "sizeBytes": 251257559
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:433f846dcccb7ab4050095fac2c08c49a182b79c0f30c497c4e8371128357c45",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.13"
+            ],
+            "sizeBytes": 251257357
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:db1eb715b51675c35cb499641273d072a63987263995fc4c7cf39a61e64f8ade",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.18"
+            ],
+            "sizeBytes": 251257357
+          }
+        ]
+      }
+    },
+    {
+      "metadata": {
+        "name": "k8s-agentpool1-10851795-2",
+        "selfLink": "/api/v1/nodes/k8s-agentpool1-10851795-2",
+        "uid": "2f54f4af-d150-11e7-854f-000d3af99127",
+        "resourceVersion": "6619602",
+        "creationTimestamp": "2017-11-24T19:46:37Z",
+        "labels": {
+          "agentpool": "agentpool1",
+          "beta.kubernetes.io/arch": "amd64",
+          "beta.kubernetes.io/instance-type": "Standard_D2_v2",
+          "beta.kubernetes.io/os": "linux",
+          "failure-domain.beta.kubernetes.io/region": "westus2",
+          "failure-domain.beta.kubernetes.io/zone": "0",
+          "kubernetes.azure.com/cluster": "pr45-zliang-k8s-5a1875a0",
+          "kubernetes.io/hostname": "k8s-agentpool1-10851795-2",
+          "kubernetes.io/role": "agent"
+        },
+        "annotations": {
+          "node.alpha.kubernetes.io/ttl": "0",
+          "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+        }
+      },
+      "spec": {
+        "podCIDR": "10.244.3.0/24",
+        "externalID": "/subscriptions/ae4ab7c9-dcdf-4427-9729-48e8c7551be9/resourceGroups/pr45-zliang-k8s-5a1875a0/providers/Microsoft.Compute/virtualMachines/k8s-agentpool1-10851795-2",
+        "providerID": "azure:///subscriptions/ae4ab7c9-dcdf-4427-9729-48e8c7551be9/resourceGroups/pr45-zliang-k8s-5a1875a0/providers/Microsoft.Compute/virtualMachines/k8s-agentpool1-10851795-2"
+      },
+      "status": {
+        "capacity": {
+          "alpha.kubernetes.io/nvidia-gpu": "0",
+          "cpu": "2",
+          "memory": "7123036Ki",
+          "pods": "110"
+        },
+        "allocatable": {
+          "alpha.kubernetes.io/nvidia-gpu": "0",
+          "cpu": "2",
+          "memory": "7020636Ki",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "NetworkUnavailable",
+            "status": "False",
+            "lastHeartbeatTime": "2017-11-24T19:46:54Z",
+            "lastTransitionTime": "2017-11-24T19:46:54Z",
+            "reason": "RouteCreated",
+            "message": "RouteController created a route"
+          },
+          {
+            "type": "OutOfDisk",
+            "status": "False",
+            "lastHeartbeatTime": "2018-01-19T09:01:18Z",
+            "lastTransitionTime": "2018-01-10T02:37:45Z",
+            "reason": "KubeletHasSufficientDisk",
+            "message": "kubelet has sufficient disk space available"
+          },
+          {
+            "type": "MemoryPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2018-01-19T09:01:18Z",
+            "lastTransitionTime": "2018-01-10T02:37:45Z",
+            "reason": "KubeletHasSufficientMemory",
+            "message": "kubelet has sufficient memory available"
+          },
+          {
+            "type": "DiskPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2018-01-19T09:01:18Z",
+            "lastTransitionTime": "2018-01-10T02:37:45Z",
+            "reason": "KubeletHasNoDiskPressure",
+            "message": "kubelet has no disk pressure"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastHeartbeatTime": "2018-01-19T09:01:18Z",
+            "lastTransitionTime": "2018-01-10T02:37:45Z",
+            "reason": "KubeletReady",
+            "message": "kubelet is posting ready status"
+          }
+        ],
+        "addresses": [
+          {
+            "type": "InternalIP",
+            "address": "10.240.0.5"
+          },
+          {
+            "type": "Hostname",
+            "address": "k8s-agentpool1-10851795-2"
+          }
+        ],
+        "daemonEndpoints": {
+          "kubeletEndpoint": {
+            "Port": 10250
+          }
+        },
+        "nodeInfo": {
+          "machineID": "40beb5eb909e171860ceee669da56e1d",
+          "systemUUID": "C213D520-C955-B34C-8AC8-9DDC22C6E5F4",
+          "bootID": "83e29b69-6fcf-4772-8975-663a23f34f05",
+          "kernelVersion": "4.11.0-1016-azure",
+          "osImage": "Debian GNU/Linux 8 (jessie)",
+          "containerRuntimeVersion": "docker://1.12.6",
+          "kubeletVersion": "v1.7.9",
+          "kubeProxyVersion": "v1.7.9",
+          "operatingSystem": "linux",
+          "architecture": "amd64"
+        },
+        "images": [
+          {
+            "names": [
+              "gcrio.azureedge.net/google_containers/hyperkube-amd64@sha256:78ee293ddf7c44ea960c43dff0ae6cbc61d6537d41056609fee0750a3e3800e4",
+              "gcrio.azureedge.net/google_containers/hyperkube-amd64:v1.7.9"
+            ],
+            "sizeBytes": 615502769
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:41d9d644e43544eb1c82464a4c067dca01daa99efd9ebe7d93b64660b8da4686",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.32"
+            ],
+            "sizeBytes": 251282123
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:6c8d1a2ddbf7bef2990ad3058f5da23c922e7fa942d655bd91b1df264a284cca",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.31"
+            ],
+            "sizeBytes": 251282059
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:dd4aa99c9df47eb0cb05e8cabb552f7271dee9825689ab0241380eccd8b2b620",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.30"
+            ],
+            "sizeBytes": 251282037
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:cb8f42ab37d13477e7c6a0deafd3c28a518d6e5b5c4db2fa24dac607946091d4",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.29"
+            ],
+            "sizeBytes": 251282033
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:3d54bd375545be9952bcc598a882520af72b75a26ce054865314604cc2d954ff",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.34"
+            ],
+            "sizeBytes": 251281974
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:44b72f4adaa2a051828735c37c4e720c7b9e7008d84d63625bf2b9efe4c7c31e",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.33"
+            ],
+            "sizeBytes": 251281968
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:17cde5ddd68040ce6636344c59d0ee8049fdb5987b8aee65e10fc28ea0c9ca91",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.28"
+            ],
+            "sizeBytes": 251281958
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:4339c160a2df4303d02de044ffa6e43bcc0f11149ab1a1129da8fec8a16eb04a",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha2.01"
+            ],
+            "sizeBytes": 251281877
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:a05422ae1bff1dd719ea93dcdf7587e617d19eed992c1fa250d75e99dd3849d6",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha2.00"
+            ],
+            "sizeBytes": 251281827
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:56bfe055bb412fb9fba953d8b9504c04b1c5c6f4c14c25a57a29e3e9b451cdbf",
+              "gimil/splunk-fluentd-kubernetes-daemonset:test-3"
+            ],
+            "sizeBytes": 251259823
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:a2ea1993f4845df9262286b07100f4fc4bb296896fc60e57eddd1c5d63636057",
+              "gimil/splunk-fluentd-kubernetes-daemonset:test-2"
+            ],
+            "sizeBytes": 251259822
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:830f8b2877cac898b59423936a11d30cbd80dcd4082eea98f173f0fd5d360655",
+              "gimil/splunk-fluentd-kubernetes-daemonset:test-1"
+            ],
+            "sizeBytes": 251259727
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:3882db70ab14e21b0c9e4caf88783fd465e0db5c592525707d828aa599a26c9f",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.6"
+            ],
+            "sizeBytes": 251259192
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:f9695f26a6babe8dcbd6330b0fbb12c440d623866812ae5087463c244e52bc0c",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.38"
+            ],
+            "sizeBytes": 251259157
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:39fcf27b26a81c61e7c78cd1270acf98f2ebcd09e916afe0f13aa612e4ec0016",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.5"
+            ],
+            "sizeBytes": 251259154
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:7e4380fbbece6129375ef16c58c9698724184b8f6bcb58f3baaf6295732741b3",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.24"
+            ],
+            "sizeBytes": 251259145
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:1ee6d10f6e56a6aee97df5deeea273f739f7eb45489f2ce8b1088c295584b9f0",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.39"
+            ],
+            "sizeBytes": 251259140
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:bd96a23d04f8b5e60acaa69217d7da6aad880ddfd3edcee7ae0fddb9044713ed",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.1"
+            ],
+            "sizeBytes": 251259133
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:1cda67df8840c4e1e99ae031fe6ec68279c43304a86d2e75ae3928d092f94f26",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.2"
+            ],
+            "sizeBytes": 251259132
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:ba369cf88ac0b74c48a3fdc61cbc762d9579089b1a148412e7b1f1115104ea49",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.25"
+            ],
+            "sizeBytes": 251259129
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:da8c1fbbda489fb18281dabffd3486a60b01cd04ff46f2ae0b4ea033c3a60fef",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.3"
+            ],
+            "sizeBytes": 251259124
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:0628c82f63ac1895cf3c6354578ee3a6b19bbc27c55cdfb7897d7b20a3010947",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.0"
+            ],
+            "sizeBytes": 251259123
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:c30ad83304d6771519f54c1b328f56c9c6bd58f1d6fa341715606ea7a8092e5c",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.4"
+            ],
+            "sizeBytes": 251259123
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:a9cb1f73c5614177e8ea26fbf3a067cc6cf4e05a0980a3982326628ef24a4345",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.21"
+            ],
+            "sizeBytes": 251259111
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:b5c59e136e1eea6db9dc8b77a2918b6ac01f2749cabed9d3b753cb3e5b848578",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.27"
+            ],
+            "sizeBytes": 251259097
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:547bbde1dd1762a844f18763556df2d9c73b470f608a433cf5d12d702702e5ef",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.22",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.23"
+            ],
+            "sizeBytes": 251259028
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:3fe22a8afad3347c191f4b8943f21ba96ae10929e3ceb0e580ae613d4f5a8a2e",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.34"
+            ],
+            "sizeBytes": 251259025
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:f7ff5af8eff48f05e215a1be343218d3ab05223f79ee08692e3069db8fdab3cf",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.26"
+            ],
+            "sizeBytes": 251259020
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:3b1fce05ae1946e1dd0e6a2fb0333e5fd117c5fbd81ab86f53f4322af1adbbf7",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.35"
+            ],
+            "sizeBytes": 251258908
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:47f25b1a8cf90a8a9ab2b57741c33054a49eaa69cef7b82b16cc733e5dee955a",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.37"
+            ],
+            "sizeBytes": 251258892
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:aff8d1f298f3e93cb33ed6018412ff3313f3991b1b7c67ba997ab2681e8c03f0",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.36"
+            ],
+            "sizeBytes": 251258888
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:bdd13d35cc3198830735e44e7ae145c3eda4bab58fb3ae1f9f502ecbfb01b6d0",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.30"
+            ],
+            "sizeBytes": 251258853
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:2584f02334bc5d48169697ae5aa614e40842d695151f75bc62ecc86618f38a67",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.32"
+            ],
+            "sizeBytes": 251258850
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:91273a0fc68ec08fe56ea02b81277481283a1deb0df0b96f2e195d14d1e1aee5",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.31"
+            ],
+            "sizeBytes": 251258849
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:f7f157a33bca5cfb11d53775d5eb1a2027594e0fcba931c8d70f9bd35446a54d",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.33"
+            ],
+            "sizeBytes": 251258776
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:6bda95756515eee9c7d2797fbc61be886c00e4b594e1ef1961876f480096393b",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.10"
+            ],
+            "sizeBytes": 251258452
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:02cbdd6c3449782a7c0f5e113e66fbd490c321f1be28e3340b7e9728500ab6eb",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.9"
+            ],
+            "sizeBytes": 251258419
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:2af4f54741690f99a5ef5095ee94fda5a89e8a1092725f55d62fa8fa26d4d607",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.7"
+            ],
+            "sizeBytes": 251258345
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:686de691b932a15cc0dde1426408f62c59e26ebcaf5b580923ae3c46bf153420",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.8"
+            ],
+            "sizeBytes": 251258338
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:2f3436c141a673f7a53c9ae71c5772c8f6c169ab5d1b8f0c57790938b35da943",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.25"
+            ],
+            "sizeBytes": 251257791
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:878eb6c2da7eca5e6aa5a50eec371dbf5e14baefc65bcbedadc7941a9b8d5845",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.24"
+            ],
+            "sizeBytes": 251257743
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:971ecc2ce270cbd6332980b7e63c9aad968c23e16a4e021f5ae6c52baef5638a",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.27"
+            ],
+            "sizeBytes": 251257720
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:59a61098625eeaf737e7c821fafcce7e8dac4b9910e489ac6d7be8e13128f7f0",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.26"
+            ],
+            "sizeBytes": 251257696
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:06782a6ab041ebf177c34c6bb130c0fcb17ca0b6143b751216189c29b097b4da",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.22"
+            ],
+            "sizeBytes": 251257623
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:754f68da9b81821fbbbd4e77d76cebf157d6c76d31f1cdeed9ead76c21a61a8d",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.23"
+            ],
+            "sizeBytes": 251257623
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:685ae21474f5b18a9dba5174d3d1d83754068ed19fffbf41707f3fac7a8cda45",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.21"
+            ],
+            "sizeBytes": 251257622
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:7b0359ecf8d729dae1d74ccad6ef2c93540c4c7e0baf309eacbcbb38a7f808d7",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.20"
+            ],
+            "sizeBytes": 251257559
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:db1eb715b51675c35cb499641273d072a63987263995fc4c7cf39a61e64f8ade",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.18"
+            ],
+            "sizeBytes": 251257357
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:433f846dcccb7ab4050095fac2c08c49a182b79c0f30c497c4e8371128357c45",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.13"
+            ],
+            "sizeBytes": 251257357
+          }
+        ]
+      }
+    },
+    {
+      "metadata": {
+        "name": "k8s-master-10851795-0",
+        "selfLink": "/api/v1/nodes/k8s-master-10851795-0",
+        "uid": "085f2273-d150-11e7-854f-000d3af99127",
+        "resourceVersion": "6619604",
+        "creationTimestamp": "2017-11-24T19:45:32Z",
+        "labels": {
+          "beta.kubernetes.io/arch": "amd64",
+          "beta.kubernetes.io/instance-type": "Standard_D2_v2",
+          "beta.kubernetes.io/os": "linux",
+          "failure-domain.beta.kubernetes.io/region": "westus2",
+          "failure-domain.beta.kubernetes.io/zone": "0",
+          "kubernetes.azure.com/cluster": "pr45-zliang-k8s-5a1875a0",
+          "kubernetes.io/hostname": "k8s-master-10851795-0",
+          "kubernetes.io/role": "master"
+        },
+        "annotations": {
+          "node.alpha.kubernetes.io/ttl": "0",
+          "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+        }
+      },
+      "spec": {
+        "podCIDR": "10.244.0.0/24",
+        "externalID": "/subscriptions/ae4ab7c9-dcdf-4427-9729-48e8c7551be9/resourceGroups/pr45-zliang-k8s-5a1875a0/providers/Microsoft.Compute/virtualMachines/k8s-master-10851795-0",
+        "providerID": "azure:///subscriptions/ae4ab7c9-dcdf-4427-9729-48e8c7551be9/resourceGroups/pr45-zliang-k8s-5a1875a0/providers/Microsoft.Compute/virtualMachines/k8s-master-10851795-0",
+        "taints": [
+          {
+            "key": "node-role.kubernetes.io/master",
+            "value": "true",
+            "effect": "NoSchedule",
+            "timeAdded": null
+          }
+        ]
+      },
+      "status": {
+        "capacity": {
+          "cpu": "2",
+          "memory": "7123036Ki",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "2",
+          "memory": "7020636Ki",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "NetworkUnavailable",
+            "status": "False",
+            "lastHeartbeatTime": "2017-11-24T19:45:53Z",
+            "lastTransitionTime": "2017-11-24T19:45:53Z",
+            "reason": "RouteCreated",
+            "message": "RouteController created a route"
+          },
+          {
+            "type": "OutOfDisk",
+            "status": "False",
+            "lastHeartbeatTime": "2018-01-19T09:01:20Z",
+            "lastTransitionTime": "2018-01-15T18:36:50Z",
+            "reason": "KubeletHasSufficientDisk",
+            "message": "kubelet has sufficient disk space available"
+          },
+          {
+            "type": "MemoryPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2018-01-19T09:01:20Z",
+            "lastTransitionTime": "2018-01-15T18:36:50Z",
+            "reason": "KubeletHasSufficientMemory",
+            "message": "kubelet has sufficient memory available"
+          },
+          {
+            "type": "DiskPressure",
+            "status": "False",
+            "lastHeartbeatTime": "2018-01-19T09:01:20Z",
+            "lastTransitionTime": "2018-01-15T18:36:50Z",
+            "reason": "KubeletHasNoDiskPressure",
+            "message": "kubelet has no disk pressure"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastHeartbeatTime": "2018-01-19T09:01:20Z",
+            "lastTransitionTime": "2018-01-15T18:36:50Z",
+            "reason": "KubeletReady",
+            "message": "kubelet is posting ready status"
+          }
+        ],
+        "addresses": [
+          {
+            "type": "InternalIP",
+            "address": "10.240.255.5"
+          },
+          {
+            "type": "Hostname",
+            "address": "k8s-master-10851795-0"
+          }
+        ],
+        "daemonEndpoints": {
+          "kubeletEndpoint": {
+            "Port": 10250
+          }
+        },
+        "nodeInfo": {
+          "machineID": "40beb5eb909e171860ceee669da56e1d",
+          "systemUUID": "1935F284-2277-944D-A9DC-BE658FA60409",
+          "bootID": "b295d8fa-7459-4554-b30e-169eb813e131",
+          "kernelVersion": "4.11.0-1016-azure",
+          "osImage": "Debian GNU/Linux 8 (jessie)",
+          "containerRuntimeVersion": "docker://1.12.6",
+          "kubeletVersion": "v1.7.9",
+          "kubeProxyVersion": "v1.7.9",
+          "operatingSystem": "linux",
+          "architecture": "amd64"
+        },
+        "images": [
+          {
+            "names": [
+              "gcrio.azureedge.net/google_containers/hyperkube-amd64@sha256:78ee293ddf7c44ea960c43dff0ae6cbc61d6537d41056609fee0750a3e3800e4",
+              "gcrio.azureedge.net/google_containers/hyperkube-amd64:v1.7.9"
+            ],
+            "sizeBytes": 615502769
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:41d9d644e43544eb1c82464a4c067dca01daa99efd9ebe7d93b64660b8da4686",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.32"
+            ],
+            "sizeBytes": 251282123
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:6c8d1a2ddbf7bef2990ad3058f5da23c922e7fa942d655bd91b1df264a284cca",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.31"
+            ],
+            "sizeBytes": 251282059
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:dd4aa99c9df47eb0cb05e8cabb552f7271dee9825689ab0241380eccd8b2b620",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.30"
+            ],
+            "sizeBytes": 251282037
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:cb8f42ab37d13477e7c6a0deafd3c28a518d6e5b5c4db2fa24dac607946091d4",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.29"
+            ],
+            "sizeBytes": 251282033
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:3d54bd375545be9952bcc598a882520af72b75a26ce054865314604cc2d954ff",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.34"
+            ],
+            "sizeBytes": 251281974
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:44b72f4adaa2a051828735c37c4e720c7b9e7008d84d63625bf2b9efe4c7c31e",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.33"
+            ],
+            "sizeBytes": 251281968
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:17cde5ddd68040ce6636344c59d0ee8049fdb5987b8aee65e10fc28ea0c9ca91",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha1.28"
+            ],
+            "sizeBytes": 251281958
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:4339c160a2df4303d02de044ffa6e43bcc0f11149ab1a1129da8fec8a16eb04a",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha2.01"
+            ],
+            "sizeBytes": 251281877
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:a05422ae1bff1dd719ea93dcdf7587e617d19eed992c1fa250d75e99dd3849d6",
+              "gimil/splunk-fluentd-kubernetes-daemonset:1.0.0-alpha2.00"
+            ],
+            "sizeBytes": 251281827
+          },
+          {
+            "names": [
+              "gimil/splunk-fluentd-kubernetes-daemonset@sha256:ba369cf88ac0b74c48a3fdc61cbc762d9579089b1a148412e7b1f1115104ea49",
+              "gimil/splunk-fluentd-kubernetes-daemonset:0.25"
+            ],
+            "sizeBytes": 251259129
+          },
+          {
+            "names": [
+              "gcrio.azureedge.net/google_containers/kube-addon-manager-amd64@sha256:3e6ff32eb762ecf17d817c49372f4fe51052d3406772ddb0a65f89c478070b96",
+              "gcrio.azureedge.net/google_containers/kube-addon-manager-amd64:v6.4-beta.2"
+            ],
+            "sizeBytes": 79238665
+          },
+          {
+            "names": [
+              "gcrio.azureedge.net/google_containers/pause-amd64@sha256:163ac025575b775d1c0f9bf0bdd0f086883171eb475b5068e7defa4ca9e76516",
+              "gcrio.azureedge.net/google_containers/pause-amd64:3.0"
+            ],
+            "sizeBytes": 746888
+          }
+        ]
+      }
+    }
+  ]
+}
