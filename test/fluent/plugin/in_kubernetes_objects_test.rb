@@ -92,7 +92,7 @@ describe Fluent::Plugin::KubernetesObjectsInput do
 
       d.run expect_emits: 1, timeout: 3
       events = d.events
-      expect(events.all? { |e| e[0] == 'kubernetes.events'}).must_equal true
+      expect(events.all? { |e| e[0] == 'kubernetes.events.watch'}).must_equal true
     end
   end
 end

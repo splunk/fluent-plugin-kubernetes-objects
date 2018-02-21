@@ -205,7 +205,7 @@ module Fluent::Plugin
 
     def create_watcher_thread(object_name, watcher)
       thread_create(:"watch_#{object_name}") {
-	tag = generate_tag object_name
+	tag = generate_tag "#{object_name}.watch"
 	watcher.each { |entity|
 	  log.trace { "Received new object from watching #{object_name}"}
 	  router.emit tag, Fluent::Engine.now, JSON.parse(entity)
