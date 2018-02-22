@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "fluent/plugin/input"
 require 'kubeclient'
 
@@ -7,7 +9,7 @@ module Fluent::Plugin
 
     Fluent::Plugin.register_input('kubernetes_objects', self)
 
-    helpers :thread
+    helpers :storage, :thread
 
     desc 'The tag of the event.'
     config_param :tag, :string, default: 'kubernetes.*'
@@ -72,23 +74,32 @@ module Fluent::Plugin
       config_param :field_selector, :string, default: nil
     end
 
+    config_section :storage do
+      # use memory by default
+      config_set_default :usage, "checkpoints"
+      config_set_default :@type, "local"
+      config_set_default :persistent, false
+    end
+
     def configure(conf)
       super
+
       raise Fluent::ConfigError, "At least one <pull> or <watch> is required, but found none." if @pull_objects.empty? && @watch_objects.empty?
+
+      @storage = storage_create usage: "checkpoints"
 
       parse_tag
       initialize_client
-      initialize_watchers
     end
 
     def start
       super
-      @pull_objects.each(&method(:create_pull_thread))
-      @watchers.each(&method(:create_watcher_thread))
+      start_pullers
+      start_watchers
     end
 
     def close
-      @watchers.each_value &:finish
+      @watchers.each &:finish if @watchers
       super
     end
 
@@ -152,15 +163,21 @@ module Fluent::Plugin
       end
     end
 
-    def initialize_watchers
-      # TODO use checkpoint (resourceVersion)
-      @watchers = @watch_objects.inject({}) { |h, o|
+    def start_pullers
+      @pull_objects.each(&method(:create_pull_thread))
+    end
+
+    def start_watchers
+      @watchers = @watch_objects.map do |o|
 	o = o.to_h.dup
 	o[:as] = :raw
 	resource_name = o.delete(:resource_name)
-	h[resource_name] = @client.public_send "watch_#{resource_name}", o
-	h
-      }
+	version = @storage.get(resource_name)
+	o[:resource_version] = version if version
+	@client.public_send("watch_#{resource_name}", o).tap { |watcher|
+	  create_watcher_thread resource_name, watcher
+	}
+      end
     end
 
     def create_pull_thread(conf)
@@ -208,7 +225,9 @@ module Fluent::Plugin
 	tag = generate_tag "#{object_name}.watch"
 	watcher.each { |entity|
 	  log.trace { "Received new object from watching #{object_name}"}
-	  router.emit tag, Fluent::Engine.now, JSON.parse(entity)
+	  entity = JSON.parse(entity)
+	  router.emit tag, Fluent::Engine.now, entity
+	  @storage.put object_name, entity['object']['metadata']['resourceVersion']
 	}
       }
     end

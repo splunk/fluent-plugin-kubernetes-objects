@@ -77,9 +77,11 @@ module PluginTestHelper
     }.close
   end
 
-  def stub_k8s_events
+  def stub_k8s_events(params: nil)
     open(File.expand_path('../events.json', __FILE__)).tap { |f|
-      stub_request(:get, "#{k8s_url}/v1/watch/events").
+      url = "#{k8s_url}/v1/watch/events"
+      url << '?' << params.map { |k, v|  "#{k}=#{v}" }.join('&') if params
+      stub_request(:get, url).
 	to_return(body: f.read(), headers: {"Content-Type" => "application/json", "Transfer-Encoding" => "chunked"})
     }.close
   end

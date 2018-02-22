@@ -94,5 +94,30 @@ describe Fluent::Plugin::KubernetesObjectsInput do
       events = d.events
       expect(events.all? { |e| e[0] == 'kubernetes.events.watch'}).must_equal true
     end
+
+    it "should use checkpoints for watching" do
+      begin
+	require 'tempfile'
+	f = Tempfile.new("fluentd-k8s-objects-test", encoding: 'utf-8')
+	f.write('{"events": "123456"}')
+	f.close
+
+	d = create_input_driver(<<~CONF)
+	kubernetes_url #{k8s_url}
+	<storage>
+	   path #{f.path}
+	</storage>
+	<watch>
+	resource_name events
+	</watch>
+	CONF
+
+	stub_k8s_events params: {resourceVersion: "123456"}
+
+	d.run expect_emits: 1, timeout: 3
+      ensure
+	f.unlink
+      end
+    end
   end
 end
