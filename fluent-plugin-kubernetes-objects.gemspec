@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = "fluent-plugin-kubernetes-objects"
-  spec.version       = "1.0.0-alpha.1"
+  spec.version       = "1.0.0"
   spec.authors       = ["Gimi Liang"]
   spec.email         = ["zliang@splunk.com"]
 

@@ -35,7 +35,7 @@ module Fluent::Plugin
     desc 'Path to the file contains the API token. By default it reads from the file "token" in the `secret_dir`.'
     config_param :bearer_token_file, :string, default: nil
 
-    desc "Path of the location where pod's service account's credentials are stored. Usually you don't need to care about this config, the default value should work in most cases."
+    desc "Path of the location where pod's service account's credentials are stored."
     config_param :secret_dir, :string, default: '/var/run/secrets/kubernetes.io/serviceaccount'
 
     desc 'Define a resource to pull.'
@@ -52,7 +52,7 @@ module Fluent::Plugin
       desc 'A selector to restrict the list of returned objects by fields.'
       config_param :field_selector, :string, default: nil
 
-      desc 'The interval at which the objects will be pulled, default 15m.'
+      desc 'The interval at which the objects will be pulled.'
       config_param :interval, :time, default: 15 * 60
     end
 
