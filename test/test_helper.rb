@@ -23,7 +23,7 @@ end
 module PluginTestHelper
   def k8s_host() "127.0.0.1" end
   def k8s_port() "8001" end
-  def k8s_url() "https://#{k8s_host}:#{k8s_port}/api" end
+  def k8s_url(path='api') "https://#{k8s_host}:#{k8s_port}/#{path}" end
 
   def fluentd_conf_for(*lines)
     basic_config = [
@@ -40,6 +40,7 @@ module PluginTestHelper
   def stub_k8s_requests
     # all stub response bodies are from real k8s 1.8 API calls
     stub_k8s_api
+    stub_k8s_apis
     stub_k8s_v1
     stub_k8s_namespaces
     stub_k8s_nodes
@@ -50,6 +51,12 @@ module PluginTestHelper
   def stub_k8s_api
     open(File.expand_path('../api.json', __FILE__)).tap { |f|
       stub_request(:get, k8s_url).to_return(body: f.read)
+    }.close
+  end
+
+  def stub_k8s_apis
+    open(File.expand_path('../apis.json', __FILE__)).tap { |f|
+      stub_request(:get, k8s_url('apis')).to_return(body: f.read)
     }.close
   end
 

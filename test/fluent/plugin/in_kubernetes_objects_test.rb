@@ -47,6 +47,17 @@ describe Fluent::Plugin::KubernetesObjectsInput do
       </pull>
       CONF
     end
+
+    it "should use pick the right path" do
+      ENV['KUBERNETES_SERVICE_HOST'] = k8s_host
+      ENV['KUBERNETES_SERVICE_PORT'] = k8s_port
+      expect(create_input_driver(<<~CONF).instance.kubernetes_url).must_equal k8s_url('apis')
+      api_version apps/v1
+      <pull>
+      resource_name deployments
+      </pull>
+      CONF
+    end
   end
 
   describe "emit events" do

@@ -121,7 +121,9 @@ module Fluent::Plugin
 	# Use Kubernetes default service account if we're in a pod.
 	env_host = ENV['KUBERNETES_SERVICE_HOST']
 	env_port = ENV['KUBERNETES_SERVICE_PORT']
-	@kubernetes_url = "https://#{env_host}:#{env_port}/api" if env_host && env_port
+	if env_host && env_port
+	  @kubernetes_url = "https://#{env_host}:#{env_port}/#{@api_version == 'v1' ? 'api' : 'apis'}"
+	end
       end
 
       raise Fluent::ConfigError, "kubernetes url is not set" unless @kubernetes_url
