@@ -18,12 +18,17 @@ Gem::Specification.new do |spec|
       "public gem pushes."
   end
 
-  spec.files         = `git ls-files -z`.split("\x0").reject do |f|
-    f.match(%r{^(test|spec|features)/})
-  end
+  spec.require_paths = ["lib"]
+  spec.test_files    = Dir.glob('test/**/**.rb')
+  spec.files         = %w[
+    CODE_OF_CONDUCT.md README.md LICENSE.md
+    fluent-plugin-kubernetes-objects.gemspec
+    Gemfile Gemfile.lock
+    Rakefile
+  ] + Dir.glob('lib/**/**').reject(&File.method(:directory?))
+
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
-  spec.require_paths = ["lib"]
 
   spec.required_ruby_version = '>= 2.3.0'
 
