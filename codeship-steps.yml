@@ -1,0 +1,10 @@
+- type: serial
+  service: builder
+  steps:
+  - command: echo Finshed Building
+
+- type: serial
+  service: unittests
+  steps:
+  - command: rake test
+  

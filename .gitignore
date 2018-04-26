@@ -7,3 +7,5 @@
 /spec/reports/
 /tmp/
 *.gem
+.DS_Store
+*.aes
