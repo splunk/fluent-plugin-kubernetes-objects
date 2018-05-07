@@ -1,8 +1,10 @@
 # fluent-plugin-kubernetes-objects
 
-[Fluentd](https://fluentd.org/) input plugin to collect object data in a kubernetes cluster.
+[Fluentd](https://fluentd.org/) input plugin to collect [objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/) in a kubernetes cluster.
 
-This input plugin supports two models: pull, and watch. In `pull` model, it will query object data at a certain interval; whereas in `watch` model, it will keep watching the changes of objects, and send those changes to down stream. You can use one of those two models, or just use one of them.
+This input plugin can collects data in two ways:
+* pull: it collects all available objects at a interval by calling the list APIs.
+* watch: it collects only the new objects when they show up by calling the watch APIs.
 
 ## Installation
 
@@ -85,7 +87,7 @@ The URL to the kubernetes API endpoint. By default, it will read from environmen
 
 #### api_version (string) (optional)
 
-Kubernetes API version.
+Kubernetes API version, it includes the API group name and the version, just like the `apiVersion` in a Kubernetes manifests YAML file. E.g. `v1`, `rbac.authorization.k8s.io/v1`, etc.
 
 Default value: `v1`.
 
@@ -124,6 +126,10 @@ Ths &lt;pull&gt; section is used to define which object to pull from the cluster
 ##### resource_name (string) (required)
 
 The name of the object to pull. E.g. `pods`, `nodes`. This must match `api_version`.
+The `resource_name` is not exactly the same as the name in Kubernetes API.
+If a name contains multiple words, e.g. `daemonsets` and `replicasets`,
+you will need use underscore `_` to separate the words.
+So `daemonsets` becomes `daemon_sets`, and `replicasets` becomes `replica_sets`, and so on.
 
 ##### namespace (string) (optional)
 
