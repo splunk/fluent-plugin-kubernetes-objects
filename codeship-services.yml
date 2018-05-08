@@ -1,6 +1,6 @@
 builder:
   build:
-    dockerfile: Dockerfile
+    dockerfile: /ci/Dockerfile
     image: splunk/fluent-plugin-kubernetes-objects
 
 unittests:
