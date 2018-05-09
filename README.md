@@ -1,3 +1,4 @@
+[ ![Codeship Status for splunk/fluent-plugin-kubernetes-objects](https://app.codeship.com/projects/8ae91f00-261e-0136-02ab-6e830b67b562/status?branch=master)](https://app.codeship.com/projects/286766)
 # fluent-plugin-kubernetes-objects
 
 [Fluentd](https://fluentd.org/) input plugin to collect [objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/) in a kubernetes cluster.
