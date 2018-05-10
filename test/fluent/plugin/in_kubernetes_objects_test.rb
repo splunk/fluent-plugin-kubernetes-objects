@@ -9,7 +9,7 @@ describe Fluent::Plugin::KubernetesObjectsInput do
     stub_k8s_requests
   }
     
-  it { expect(::Fluent::Plugin::KubernetesObjectsInput::VERSION).wont_be_nil }
+  it { expect(::Fluent::Plugin::KubernetesObjectsInput::VERSION).is_nil }
 
   it "should require at least one <pull> or <watch> section" do
     expect{create_input_driver("kubernetes_url #{k8s_url}")}.must_raise Fluent::ConfigError
