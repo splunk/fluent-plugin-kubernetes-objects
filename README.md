@@ -164,8 +164,6 @@ By default, it uses the memory storage.
 
 See also [Storage section configurations](https://docs.fluentd.org/v1.0/articles/storage-section) and [Storage Plugin Overview](https://docs.fluentd.org/v1.0/articles/storage-plugin-overview).
 
-## Copyright
+## License
 
-* Copyright(c) 2018- Gimi Liang @ Splunk Inc.
-* License
-  * [SPLUNK PRE-RELEASE SOFTWARE LICENSE AGREEMENT](https://www.splunk.com/en_us/legal/splunk-pre-release-software-license-agreement.html)
+See [License](LICENSE).

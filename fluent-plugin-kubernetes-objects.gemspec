@@ -4,10 +4,10 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Gimi Liang"]
   spec.email         = ["zliang@splunk.com"]
 
-  spec.summary       = %q{A Fluentd input plugin for collecting Kubernetes objects.}
+  spec.summary       = %q{Fluentd Plugin for Kubernetes Objects.}
   spec.description   = %q{A Fluentd input plugin for collecting Kubernetes objects, e.g. pods, namespaces, events, etc. by pulling or watching.}
   spec.homepage      = "https://github.com/splunk/fluent-plugin-kubernetes-objects"
-  spec.license       = "Nonstandard"
+  spec.license       = "Apache-2.0"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
   spec.test_files    = Dir.glob('test/**/**.rb')
   spec.files         = %w[
-    CODE_OF_CONDUCT.md README.md LICENSE.md
+    CODE_OF_CONDUCT.md README.md LICENSE
     fluent-plugin-kubernetes-objects.gemspec
     Gemfile Gemfile.lock
     Rakefile
