@@ -10,8 +10,10 @@ describe Fluent::Plugin::KubernetesObjectsInput do
   }
     
   it { expect(::Fluent::Plugin::KubernetesObjectsInput::VERSION).wont_be_nil }
+    puts 'Test: Version will not be nil'
 
   it "should require at least one <pull> or <watch> section" do
+    puts 'Test: should require at least one <pull> or <watch> section'
     expect{create_input_driver("kubernetes_url #{k8s_url}")}.must_raise Fluent::ConfigError
     expect(create_input_driver(<<~CONF)).wont_be_nil
     kubernetes_url #{k8s_url}
@@ -29,6 +31,7 @@ describe Fluent::Plugin::KubernetesObjectsInput do
 
   describe "config: kubernetes_url" do
     it "should read from environment variables by default" do
+      puts 'Test: should read from environment variables by default'
       ENV['KUBERNETES_SERVICE_HOST'] = k8s_host
       ENV['KUBERNETES_SERVICE_PORT'] = k8s_port
       expect(create_input_driver(<<~CONF).instance.kubernetes_url).must_equal k8s_url
@@ -39,6 +42,7 @@ describe Fluent::Plugin::KubernetesObjectsInput do
     end
 
     it "should panic if not set" do
+      puts 'Test: should panic if not set'
       ENV['KUBERNETES_SERVICE_HOST'] = nil
       ENV['KUBERNETES_SERVICE_PORT'] = nil
       expect{ create_input_driver(<<~CONF) }.must_raise Fluent::ConfigError
@@ -49,6 +53,7 @@ describe Fluent::Plugin::KubernetesObjectsInput do
     end
 
     it "should use pick the right path" do
+      puts 'Test: should use pick the right path'
       ENV['KUBERNETES_SERVICE_HOST'] = k8s_host
       ENV['KUBERNETES_SERVICE_PORT'] = k8s_port
       expect(create_input_driver(<<~CONF).instance.kubernetes_url).must_equal k8s_url('apis')
@@ -62,6 +67,7 @@ describe Fluent::Plugin::KubernetesObjectsInput do
 
   describe "emit events" do
     it "can pull one resource" do
+      puts 'Test: can pull one resource'
       d = create_input_driver(<<~CONF)
       kubernetes_url #{k8s_url}
       <pull>
@@ -76,6 +82,7 @@ describe Fluent::Plugin::KubernetesObjectsInput do
     end
 
     it "can pull multiple resources" do
+      puts 'Test: can pull multiple resources'
       d = create_input_driver(<<~CONF)
       kubernetes_url #{k8s_url}
       <pull>
@@ -94,6 +101,7 @@ describe Fluent::Plugin::KubernetesObjectsInput do
     end
 
     it "can watch resources" do
+      puts 'Test: can watch resources'
       d = create_input_driver(<<~CONF)
       kubernetes_url #{k8s_url}
       <watch>
@@ -107,27 +115,28 @@ describe Fluent::Plugin::KubernetesObjectsInput do
     end
 
     it "should use checkpoints for watching" do
+      puts 'Test: should use checkpoints for watching'
       begin
-	require 'tempfile'
-	f = Tempfile.new("fluentd-k8s-objects-test", encoding: 'utf-8')
-	f.write('{"events": "123456"}')
-	f.close
+        require 'tempfile'
+        f = Tempfile.new("fluentd-k8s-objects-test", encoding: 'utf-8')
+        f.write('{"events": "123456"}')
+        f.close
 
-	d = create_input_driver(<<~CONF)
-	kubernetes_url #{k8s_url}
-	<storage>
-	   path #{f.path}
-	</storage>
-	<watch>
-	resource_name events
-	</watch>
-	CONF
+        d = create_input_driver(<<~CONF)
+        kubernetes_url #{k8s_url}
+        <storage>
+           path #{f.path}
+        </storage>
+        <watch>
+        resource_name events
+        </watch>
+        CONF
 
-	stub_k8s_events params: {resourceVersion: "123456"}
+        stub_k8s_events params: {resourceVersion: "123456"}
 
-	d.run expect_emits: 1, timeout: 3
-      ensure
-	f.unlink
+        d.run expect_emits: 1, timeout: 3
+            ensure
+        f.unlink
       end
     end
   end
