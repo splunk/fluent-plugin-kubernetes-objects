@@ -1,9 +1,0 @@
-builder:
-  build:
-    dockerfile: /ci/Dockerfile
-    image: splunk/fluent-plugin-kubernetes-objects
-
-unittests:
-  image: splunk/fluent-plugin-kubernetes-objects
-  depends_on:
-    - builder

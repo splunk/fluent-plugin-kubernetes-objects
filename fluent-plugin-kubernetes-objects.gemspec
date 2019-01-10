@@ -1,8 +1,7 @@
 Gem::Specification.new do |spec|
   spec.name          = "fluent-plugin-kubernetes-objects"
   spec.version       = "1.0.0"
-  spec.authors       = ["Gimi Liang"]
-  spec.email         = ["zliang@splunk.com"]
+  spec.authors       = ["Splunk Inc."]
 
   spec.summary       = %q{Fluentd Plugin for Kubernetes Objects.}
   spec.description   = %q{A Fluentd input plugin for collecting Kubernetes objects, e.g. pods, namespaces, events, etc. by pulling or watching.}
