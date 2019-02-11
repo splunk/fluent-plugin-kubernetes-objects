@@ -16,8 +16,6 @@ RUN set -e \
  && gem install -N fluentd -v "1.2.0" \
  && gem install -N fluent-plugin-prometheus -v "1.0.1" \
  && gem install -N fluent-plugin-jq -v "0.5.1" \
- && gem install -N fluent-plugin-kubernetes-objects -v "1.0.0" \
- && gem install -N fluent-plugin-splunk-hec -v "1.0.1" \
  && gem install -N oj -v "3.5.1" \
  && gem install -N /tmp/*.gem \
  && dpkgArch="$(dpkg --print-architecture | awk -F- '{ print $NF }')" \
