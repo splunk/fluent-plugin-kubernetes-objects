@@ -176,9 +176,7 @@ module Fluent::Plugin
 	resource_name = o.delete(:resource_name)
 	version = @storage.get(resource_name)
 	o[:resource_version] = version if version
-	@client.public_send("watch_#{resource_name}", o).tap { |watcher|
-	  create_watcher_thread resource_name, watcher
-	}
+        create_watcher_thread resource_name, o
       end
     end
 
@@ -222,15 +220,19 @@ module Fluent::Plugin
       end
     end
 
-    def create_watcher_thread(object_name, watcher)
+    def create_watcher_thread(object_name, object)
       thread_create(:"watch_#{object_name}") {
-	tag = generate_tag "#{object_name}.watch"
-	watcher.each { |entity|
-	  log.trace { "Received new object from watching #{object_name}"}
-	  entity = JSON.parse(entity)
-	  router.emit tag, Fluent::Engine.now, entity
-	  @storage.put object_name, entity['object']['metadata']['resourceVersion']
-	}
+        loop do
+          @client.public_send("watch_#{object_name}", object).tap { |watcher|
+            tag = generate_tag "#{object_name}.watch"
+              watcher.each { |entity|
+                log.trace { "Received new object from watching #{object_name}"}
+                entity = JSON.parse(entity)
+                router.emit tag, Fluent::Engine.now, entity
+                @storage.put object_name, entity['object']['metadata']['resourceVersion']
+            }
+          }
+        end  
       }
     end
   end
