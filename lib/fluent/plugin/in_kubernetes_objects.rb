@@ -5,7 +5,7 @@ require 'kubeclient'
 
 module Fluent::Plugin
   class KubernetesObjectsInput < Fluent::Plugin::Input
-    VERSION = "1.0.0"
+    VERSION = File.read('VERSION')
 
     Fluent::Plugin.register_input('kubernetes_objects', self)
 
@@ -40,6 +40,7 @@ module Fluent::Plugin
 
     desc 'Define a resource to pull.'
     config_section :pull, required: false, init: false, multi: true, param_name: :pull_objects do
+
       desc 'The name of the resource, e.g. "nodes".'
       config_param :resource_name, :string
 
@@ -58,20 +59,20 @@ module Fluent::Plugin
 
     desc 'Define a resource to watch.'
     config_section :watch, required: false, init: false, multi: true, param_name: :watch_objects do
-      desc 'The name of the resource, e.g. "events".'
-      config_param :resource_name, :string
+    desc 'The name of the resource, e.g. "events".'
+    config_param :resource_name, :string
 
-      desc 'The namespace of the resource, it watches all namespaces if not set.'
-      config_param :namespace, :string, default: nil
+    desc 'The namespace of the resource, it watches all namespaces if not set.'
+    config_param :namespace, :string, default: nil
 
-      desc 'The name of the entity to watch, use this to watch only one entity.'
-      config_param :entity_name, :string, default: nil
+    desc 'The name of the entity to watch, use this to watch only one entity.'
+    config_param :entity_name, :string, default: nil
 
-      desc 'A selector to restrict the list of returned objects by labels.'
-      config_param :label_selector, :string, default: nil
+    desc 'A selector to restrict the list of returned objects by labels.'
+    config_param :label_selector, :string, default: nil
 
-      desc 'A selector to restrict the list of returned objects by fields.'
-      config_param :field_selector, :string, default: nil
+    desc 'A selector to restrict the list of returned objects by fields.'
+    config_param :field_selector, :string, default: nil
     end
 
     config_section :storage do
@@ -116,52 +117,52 @@ module Fluent::Plugin
     end
 
     def initialize_client
-      # mostly borrowed from Fluentd Kubernetes Metadata Filter Plugin
+    # mostly borrowed from Fluentd Kubernetes Metadata Filter Plugin
       if @kubernetes_url.nil?
-	# Use Kubernetes default service account if we're in a pod.
-	env_host = ENV['KUBERNETES_SERVICE_HOST']
-	env_port = ENV['KUBERNETES_SERVICE_PORT']
-	if env_host && env_port
-	  @kubernetes_url = "https://#{env_host}:#{env_port}/#{@api_version == 'v1' ? 'api' : 'apis'}"
-	end
+        # Use Kubernetes default service account if we're in a pod.
+        env_host = ENV['KUBERNETES_SERVICE_HOST']
+        env_port = ENV['KUBERNETES_SERVICE_PORT']
+        if env_host && env_port
+          @kubernetes_url = "https://#{env_host}:#{env_port}/#{@api_version == 'v1' ? 'api' : 'apis'}"
+        end
       end
 
       raise Fluent::ConfigError, "kubernetes url is not set" unless @kubernetes_url
 
       # Use SSL certificate and bearer token from Kubernetes service account.
       if Dir.exist?(@secret_dir)
-	secret_ca_file = File.join(@secret_dir, 'ca.crt')
-	secret_token_file = File.join(@secret_dir, 'token')
+        secret_ca_file = File.join(@secret_dir, 'ca.crt')
+        secret_token_file = File.join(@secret_dir, 'token')
 
-	if @ca_file.nil? and File.exist?(secret_ca_file)
-	  @ca_file = secret_ca_file
-	end
-
-	if @bearer_token_file.nil? and File.exist?(secret_token_file)
-	  @bearer_token_file = secret_token_file
-	end
+      if @ca_file.nil? and File.exist?(secret_ca_file)
+        @ca_file = secret_ca_file
       end
 
-      ssl_options = {
-	client_cert: @client_cert && OpenSSL::X509::Certificate.new(File.read(@client_cert)),
-	client_key:  @client_key && OpenSSL::PKey::RSA.new(File.read(@client_key)),
-	ca_file:     @ca_file,
-	verify_ssl:  @insecure_ssl ? OpenSSL::SSL::VERIFY_NONE : OpenSSL::SSL::VERIFY_PEER
-      }
+      if @bearer_token_file.nil? and File.exist?(secret_token_file)
+        @bearer_token_file = secret_token_file
+      end
+    end
 
-      auth_options = {}
-      auth_options[:bearer_token] = File.read(@bearer_token_file) if @bearer_token_file
+    ssl_options = {
+    client_cert: @client_cert && OpenSSL::X509::Certificate.new(File.read(@client_cert)),
+    client_key:  @client_key && OpenSSL::PKey::RSA.new(File.read(@client_key)),
+    ca_file:     @ca_file,
+    verify_ssl:  @insecure_ssl ? OpenSSL::SSL::VERIFY_NONE : OpenSSL::SSL::VERIFY_PEER
+    }
 
-      @client = Kubeclient::Client.new(
-	@kubernetes_url, @api_version,
-	ssl_options: ssl_options,
-	auth_options: auth_options
-      )
+    auth_options = {}
+    auth_options[:bearer_token] = File.read(@bearer_token_file) if @bearer_token_file
 
-      begin
-	@client.api_valid?
+    @client = Kubeclient::Client.new(
+      @kubernetes_url, @api_version,
+      ssl_options: ssl_options,
+      auth_options: auth_options
+    )
+
+    begin
+      @client.api_valid?
       rescue KubeException => kube_error
-	raise Fluent::ConfigError, "Invalid Kubernetes API #{@api_version} endpoint #{@kubernetes_url}: #{kube_error.message}"
+        raise Fluent::ConfigError, "Invalid Kubernetes API #{@api_version} endpoint #{@kubernetes_url}: #{kube_error.message}"
       end
     end
 
@@ -171,12 +172,12 @@ module Fluent::Plugin
 
     def start_watchers
       @watchers = @watch_objects.map do |o|
-	o = o.to_h.dup
-	o[:as] = :raw
-	resource_name = o.delete(:resource_name)
-	version = @storage.get(resource_name)
-	o[:resource_version] = version if version
-	create_watcher_thread resource_name, o
+	    o = o.to_h.dup
+	    o[:as] = :raw
+	    resource_name = o.delete(:resource_name)
+	    version = @storage.get(resource_name)
+	    o[:resource_version] = version if version
+	    create_watcher_thread resource_name, o
       end
     end
 
@@ -187,36 +188,36 @@ module Fluent::Plugin
       pull_interval = options.delete :interval
 
       thread_create :"pull_#{resource_name}" do
-	tag = generate_tag resource_name
-	while thread_current_running?
-	  log.debug "Going to pull #{resource_name}"
-	  response = @client.public_send "get_#{resource_name}", options
-	  now = Fluent::Engine.now
-	  es = Fluent::MultiEventStream.new
+        tag = generate_tag resource_name
+        while thread_current_running?
+          log.debug "Going to pull #{resource_name}"
+          response = @client.public_send "get_#{resource_name}", options
+          now = Fluent::Engine.now
+          es = Fluent::MultiEventStream.new
 
-	  # code copied from kubeclient
-	  # kubeclient will create one open struct object for each item in the response,
-	  # but this is totally unecessary in this plugin, thus we use as: :raw.
-	  result = JSON.parse(response)
+          # code copied from kubeclient
+          # kubeclient will create one open struct object for each item in the response,
+          # but this is totally unecessary in this plugin, thus we use as: :raw.
+          result = JSON.parse(response)
 
-	  resource_version = result.fetch('resourceVersion') {
-	    result.fetch('metadata', {})['resourceVersion']
-	  }
+          resource_version = result.fetch('resourceVersion') {
+          result.fetch('metadata', {})['resourceVersion']
+          }
 
-	  update_op = if resource_version
-			->(item) { item['metadata'].update requestResourceVersion: resource_version }
-		      else
-			->(item) {}
-		      end
+          update_op = if resource_version
+          ->(item) { item['metadata'].update requestResourceVersion: resource_version }
+          else
+          ->(item) {}
+          end
 
-	  # result['items'] might be nil due to https://github.com/kubernetes/kubernetes/issues/13096
-	  items = result['items'].to_a
-	  log.debug { "Received #{items.size} #{resource_name}" }
-	  items.each { |item| es.add now, item.tap(&update_op) }
-	  router.emit_stream(tag, es)
+          # result['items'] might be nil due to https://github.com/kubernetes/kubernetes/issues/13096
+          items = result['items'].to_a
+          log.debug { "Received #{items.size} #{resource_name}" }
+          items.each { |item| es.add now, item.tap(&update_op) }
+          router.emit_stream(tag, es)
 
-	  sleep(pull_interval)
-	end
+          sleep(pull_interval)
+        end
       end
     end
 
@@ -232,7 +233,7 @@ module Fluent::Plugin
                 @storage.put object_name, entity['object']['metadata']['resourceVersion']
             }
           }
-        end  
+        end
       }
     end
   end
