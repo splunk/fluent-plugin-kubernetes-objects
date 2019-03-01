@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-       - image: circleci/ruby:2.6.1-node-browsers
+      - image: circleci/ruby:2.6.1-node-browsers
     working_directory: ~/repo
     steps:
       - checkout
@@ -23,14 +23,14 @@ jobs:
             - pkg
   test:
     docker:
-       - image: circleci/ruby:2.6.1-node-browsers
+      - image: circleci/ruby:2.6.1-node-browsers
     working_directory: ~/repo
     steps:
       - attach_workspace:
           at: /tmp
       - checkout
       - setup_remote_docker:
-           reusable: true
+          reusable: true
       - run:
           name: Install dependencies
           command: |
