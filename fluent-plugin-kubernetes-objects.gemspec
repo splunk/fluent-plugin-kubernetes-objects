@@ -4,18 +4,18 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Splunk Inc.']
   spec.email         = ['DataEdge@splunk.com']
 
-  spec.summary       = %q{Fluentd Plugin for Kubernetes Objects.}
-  spec.description   = %q{A Fluentd input plugin for collecting Kubernetes objects, e.g. pods, namespaces, events, etc. by pulling or watching.}
+  spec.summary       = 'Fluentd Plugin for Kubernetes Objects.'
+  spec.description   = 'A Fluentd input plugin for collecting Kubernetes objects, e.g. pods, namespaces, events, etc. by pulling or watching.'
   spec.homepage      = 'https://github.com/splunk/fluent-plugin-kubernetes-objects'
   spec.license       = 'Apache-2.0'
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
   if spec.respond_to?(:metadata)
-    spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
+    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
   else
-    raise "RubyGems 2.0 or newer is required to protect against " \
-      "public gem pushes."
+    raise 'RubyGems 2.0 or newer is required to protect against ' \
+      'public gem pushes.'
   end
 
   spec.require_paths = ['lib']
@@ -33,11 +33,11 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 2.3.0'
 
   spec.add_runtime_dependency 'fluentd', '~> 1.3'
-  spec.add_runtime_dependency 'kubeclient','~> 4.2'
+  spec.add_runtime_dependency 'kubeclient', '~> 4.2'
 
   spec.add_development_dependency 'bundler', '~> 2.0'
+  spec.add_development_dependency 'minitest', '~> 5.11'
   spec.add_development_dependency 'rake', '~> 12.3'
   spec.add_development_dependency 'test-unit', '~> 3.3' # required by fluent/test.rb
-  spec.add_development_dependency 'minitest', '~> 5.11'
   spec.add_development_dependency 'webmock', '~> 3.5'
 end
