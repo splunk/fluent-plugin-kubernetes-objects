@@ -176,7 +176,7 @@ module Fluent::Plugin
 	resource_name = o.delete(:resource_name)
 	version = @storage.get(resource_name)
 	o[:resource_version] = version if version
-        create_watcher_thread resource_name, o
+	create_watcher_thread resource_name, o
       end
     end
 
