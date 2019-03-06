@@ -1,18 +1,20 @@
-$LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
-#$LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
+require 'simplecov'
+SimpleCov.start
 
-# suppress warning, when require the 'http' library, it shows circle require warnning,
+$LOAD_PATH.unshift File.expand_path('../lib', __dir__)
+
+# suppress warning, when require the 'http' library shows circle require warning
 # which is pretty annoying (kubeclient depends on http for watch_stream)
 _verbose = $VERBOSE
 $VERBOSE = nil
-require "fluent/plugin/in_kubernetes_objects"
+require 'fluent/plugin/in_kubernetes_objects'
 $VERBOSE = _verbose
 
-require "fluent/test"
-require "fluent/test/driver/input"
-require "fluent/test/helpers"
-require "minitest/autorun"
-require "webmock/minitest"
+require 'fluent/test'
+require 'fluent/test/driver/input'
+require 'fluent/test/helpers'
+require 'minitest/autorun'
+require 'webmock/minitest'
 
 # make assertions from webmock available in minitest/spec
 module Minitest::Expectations
@@ -21,20 +23,27 @@ module Minitest::Expectations
 end
 
 module PluginTestHelper
-  def k8s_host() "127.0.0.1" end
-  def k8s_port() "8001" end
-  def k8s_url(path='api') "https://#{k8s_host}:#{k8s_port}/#{path}" end
+  def k8s_host
+    '127.0.0.1'
+  end
+
+  def k8s_port
+    '8001'
+  end
+
+  def k8s_url(path = 'api')
+    "https://#{k8s_host}:#{k8s_port}/#{path}"
+  end
 
   def fluentd_conf_for(*lines)
-    basic_config = [
-    ]
+    basic_config = []
     (basic_config + lines).join("\n")
   end
 
   def create_input_driver(*configs)
-    Fluent::Test::Driver::Input.new(Fluent::Plugin::KubernetesObjectsInput).tap { |d|
+    Fluent::Test::Driver::Input.new(Fluent::Plugin::KubernetesObjectsInput).tap do |d|
       d.configure(fluentd_conf_for(*configs))
-    }
+    end
   end
 
   def stub_k8s_requests
@@ -49,47 +58,49 @@ module PluginTestHelper
   end
 
   def stub_k8s_api
-    open(File.expand_path('../api.json', __FILE__)).tap { |f|
+    File.open(File.expand_path('api.json', __dir__)).tap do |f|
       stub_request(:get, k8s_url).to_return(body: f.read)
-    }.close
+    end.close
   end
 
   def stub_k8s_apis
-    open(File.expand_path('../apis.json', __FILE__)).tap { |f|
+    File.open(File.expand_path('apis.json', __dir__)).tap do |f|
       stub_request(:get, k8s_url('apis')).to_return(body: f.read)
-    }.close
+    end.close
   end
 
   def stub_k8s_v1
-    open(File.expand_path('../v1.json', __FILE__)).tap { |f|
+    File.open(File.expand_path('v1.json', __dir__)).tap do |f|
       stub_request(:get, "#{k8s_url}/v1").to_return(body: f.read)
-    }.close
+    end.close
   end
 
   def stub_k8s_namespaces
-    open(File.expand_path('../namespaces.json', __FILE__)).tap { |f|
-      stub_request(:get, "#{k8s_url}/v1/namespaces").to_return(body: f.read())
-    }.close
+    File.open(File.expand_path('namespaces.json', __dir__)).tap do |f|
+      stub_request(:get, "#{k8s_url}/v1/namespaces").to_return(body: f.read)
+    end.close
   end
 
   def stub_k8s_nodes
-    open(File.expand_path('../nodes.json', __FILE__)).tap { |f|
-      stub_request(:get, "#{k8s_url}/v1/nodes").to_return(body: f.read())
-    }.close
+    File.open(File.expand_path('nodes.json', __dir__)).tap do |f|
+      stub_request(:get, "#{k8s_url}/v1/nodes").to_return(body: f.read)
+    end.close
   end
 
   def stub_k8s_pods
-    open(File.expand_path('../pods.json', __FILE__)).tap { |f|
-      stub_request(:get, "#{k8s_url}/v1/pods").to_return(body: f.read())
-    }.close
+    File.open(File.expand_path('pods.json', __dir__)).tap do |f|
+      stub_request(:get, "#{k8s_url}/v1/pods").to_return(body: f.read)
+    end.close
   end
 
   def stub_k8s_events(params: nil)
-    open(File.expand_path('../events.json', __FILE__)).tap { |f|
+    File.open(File.expand_path('events.json', __dir__)).tap do |f|
       url = "#{k8s_url}/v1/watch/events"
-      url << '?' << params.map { |k, v|  "#{k}=#{v}" }.join('&') if params
-      stub_request(:get, url).
-	to_return(body: f.read(), headers: {"Content-Type" => "application/json", "Transfer-Encoding" => "chunked"})
-    }.close
+      url << '?' << params.map { |k, v| "#{k}=#{v}" }.join('&') if params
+      stub_request(:get, url)
+        .to_return(body: f.read,
+                   headers: { 'Content-Type' => 'application/json',
+                              'Transfer-Encoding' => 'chunked' })
+    end.close
   end
 end
