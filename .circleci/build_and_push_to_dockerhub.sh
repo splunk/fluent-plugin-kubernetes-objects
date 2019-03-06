@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 echo "Building docker image..."
-cp /tmp/pkg/fluent-plugin-kubernetes-metrics-*.gem docker
+cp /tmp/pkg/fluent-plugin-kubernetes-objects-*.gem docker
 VERSION=`cat VERSION`
 docker build --build-arg VERSION=$VERSION --no-cache -t splunk/fluent-plugin-kubernetes-objects:ci ./docker
 docker tag splunk/fluent-plugin-kubernetes-objects:ci splunk/${DOCKERHUB_REPO_NAME}:${VERSION}
