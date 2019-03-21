@@ -99,7 +99,7 @@ workflows:
               only: develop
       - release:
           requires:
-          - test
+            - test
           filters:
             branches:
               only: master
