@@ -171,12 +171,12 @@ module Fluent::Plugin
 
     def start_watchers
       @watchers = @watch_objects.map do |o|
-	    o = o.to_h.dup
-	    o[:as] = :raw
-	    resource_name = o.delete(:resource_name)
-	    version = @storage.get(resource_name)
-	    o[:resource_version] = version if version
-	    create_watcher_thread resource_name, o
+        o = o.to_h.dup
+        o[:as] = :raw
+        resource_name = o.delete(:resource_name)
+        version = @storage.get(resource_name)
+        o[:resource_version] = version if version
+        create_watcher_thread resource_name, o
       end
     end
 
