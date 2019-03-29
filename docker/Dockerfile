@@ -21,7 +21,7 @@ RUN set -e \
  && gem install -N fluent-plugin-prometheus -v "1.3.0" \
  && gem install -N fluent-plugin-jq -v "0.5.1" \
  && gem install -N oj -v "3.7.9" \
- && gem install -N fluent-plugin-splunk-hec:${FLUENT_SPLUNK_HEC_GEM_VERSION	} \
+ && gem install -N fluent-plugin-splunk-hec:${FLUENT_SPLUNK_HEC_GEM_VERSION} \
  && gem install -N /tmp/*.gem \
  && dpkgArch="$(dpkg --print-architecture | awk -F- '{ print $NF }')" \
  && wget -O /usr/bin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v1.2.1/dumb-init_1.2.1_$dpkgArch \
