@@ -5,7 +5,7 @@ require 'kubeclient'
 
 module Fluent::Plugin
   class KubernetesObjectsInput < Fluent::Plugin::Input
-    VERSION = '1.1.0'.freeze
+    VERSION = '1.1.1'.freeze
 
     Fluent::Plugin.register_input('kubernetes_objects', self)
 
@@ -72,6 +72,9 @@ module Fluent::Plugin
 
       desc 'A selector to restrict the list of returned objects by fields.'
       config_param :field_selector, :string, default: nil
+
+      desc 'The interval at which the objects will be watched.'
+      config_param :interval, :time, default: 15 * 60
     end
 
     config_section :storage do
@@ -140,7 +143,7 @@ module Fluent::Plugin
         if @bearer_token_file.nil? && File.exist?(secret_token_file)
           @bearer_token_file = secret_token_file
         end
-    end
+      end
 
       ssl_options = {
         client_cert: @client_cert && OpenSSL::X509::Certificate.new(File.read(@client_cert)),
@@ -174,10 +177,12 @@ module Fluent::Plugin
         o = o.to_h.dup
         o[:as] = :raw
         resource_name = o.delete(:resource_name)
+        watch_interval = o.delete(:interval)
+
         version = @storage.get(resource_name)
         o[:resource_version] = version if version
         @client.public_send("watch_#{resource_name}", o).tap do |watcher|
-          create_watcher_thread resource_name, watcher
+          create_watcher_thread resource_name, watcher, watch_interval
         end
       end
     end
@@ -209,7 +214,7 @@ module Fluent::Plugin
                         ->(item) { item['metadata'].update requestResourceVersion: resource_version }
                       else
                         ->(item) {}
-          end
+                      end
 
           # result['items'] might be nil due to https://github.com/kubernetes/kubernetes/issues/13096
           items = result['items'].to_a
@@ -222,14 +227,17 @@ module Fluent::Plugin
       end
     end
 
-    def create_watcher_thread(object_name, watcher)
+    def create_watcher_thread(object_name, watcher, interval)
       thread_create(:"watch_#{object_name}") do
         tag = generate_tag "#{object_name}.watch"
-        watcher.each do |entity|
-          log.trace { "Received new object from watching #{object_name}" }
-          entity = JSON.parse(entity)
-          router.emit tag, Fluent::Engine.now, entity
-          @storage.put object_name, entity['object']['metadata']['resourceVersion']
+        while thread_current_running?
+          watcher.each do |entity|
+            log.trace { "Received new object from watching #{object_name}" }
+            entity = JSON.parse(entity)
+            router.emit tag, Fluent::Engine.now, entity
+            @storage.put object_name, entity['object']['metadata']['resourceVersion']
+            sleep(interval)
+          end
         end
       end
     end

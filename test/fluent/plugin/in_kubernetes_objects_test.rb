@@ -135,7 +135,7 @@ describe Fluent::Plugin::KubernetesObjectsInput do
         stub_k8s_events params: {resourceVersion: "123456"}
 
         d.run expect_emits: 1, timeout: 3
-            ensure
+      ensure
         f.unlink
       end
     end
