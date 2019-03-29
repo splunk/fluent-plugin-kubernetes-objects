@@ -6,6 +6,7 @@
 /pkg/
 /spec/reports/
 /tmp/
+/vendor/
 *.gem
 .DS_Store
 *.aes

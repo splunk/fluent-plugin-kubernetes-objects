@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fluent-plugin-kubernetes-objects (1.0.0)
+    fluent-plugin-kubernetes-objects (1.1.1)
       fluentd (~> 1.3)
       kubeclient (~> 4.2)
 
