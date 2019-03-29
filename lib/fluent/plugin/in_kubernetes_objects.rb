@@ -5,7 +5,7 @@ require 'kubeclient'
 
 module Fluent::Plugin
   class KubernetesObjectsInput < Fluent::Plugin::Input
-    VERSION = '1.1.0'.freeze
+    VERSION = '1.1.1'.freeze
 
     Fluent::Plugin.register_input('kubernetes_objects', self)
 
@@ -143,7 +143,7 @@ module Fluent::Plugin
         if @bearer_token_file.nil? && File.exist?(secret_token_file)
           @bearer_token_file = secret_token_file
         end
-    end
+      end
 
       ssl_options = {
         client_cert: @client_cert && OpenSSL::X509::Certificate.new(File.read(@client_cert)),
@@ -214,7 +214,7 @@ module Fluent::Plugin
                         ->(item) { item['metadata'].update requestResourceVersion: resource_version }
                       else
                         ->(item) {}
-          end
+                      end
 
           # result['items'] might be nil due to https://github.com/kubernetes/kubernetes/issues/13096
           items = result['items'].to_a
