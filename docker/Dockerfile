@@ -4,7 +4,10 @@ LABEL maintainer="Splunk Inc. <DataEdge@splunk.com>"
 LABEL Description="Splunk Connect for Kubernetes docker image" Vendor="Splunk Inc."
 
 ARG VERSION
+ARG FLUENT_SPLUNK_HEC_GEM_VERSION
 ENV VERSION=${VERSION}
+ENV FLUENT_SPLUNK_HEC_GEM_VERSION=${FLUENT_SPLUNK_HEC_GEM_VERSION}
+
 
 # skip runtime bundler installation
 ENV FLUENTD_DISABLE_BUNDLER_INJECTION 1
