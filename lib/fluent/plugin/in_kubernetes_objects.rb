@@ -5,7 +5,7 @@ require 'kubeclient'
 
 module Fluent::Plugin
   class KubernetesObjectsInput < Fluent::Plugin::Input
-    VERSION = '1.1.1'.freeze
+    VERSION = '1.1.2'.freeze
 
     Fluent::Plugin.register_input('kubernetes_objects', self)
 
@@ -181,9 +181,7 @@ module Fluent::Plugin
 
         version = @storage.get(resource_name)
         o[:resource_version] = version if version
-        @client.public_send("watch_#{resource_name}", o).tap do |watcher|
-          create_watcher_thread resource_name, watcher, watch_interval
-        end
+          create_watcher_thread resource_name, o, watch_interval
       end
     end
 
@@ -229,8 +227,8 @@ module Fluent::Plugin
 
     def create_watcher_thread(object_name, watcher, interval)
       thread_create(:"watch_#{object_name}") do
-        tag = generate_tag "#{object_name}.watch"
-        while thread_current_running?
+        @client.public_send("watch_#{object_name}", watcher).tap { |watcher|
+          tag = generate_tag "#{object_name}.watch"
           watcher.each do |entity|
             log.trace { "Received new object from watching #{object_name}" }
             entity = JSON.parse(entity)
@@ -238,7 +236,7 @@ module Fluent::Plugin
             @storage.put object_name, entity['object']['metadata']['resourceVersion']
             sleep(interval)
           end
-        end
+        }
       end
     end
   end
