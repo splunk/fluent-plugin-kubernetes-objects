@@ -109,9 +109,12 @@ describe Fluent::Plugin::KubernetesObjectsInput do
       </watch>
       CONF
 
+      stub_k8s_events params: {resourceVersion: "0"}
+      stub_k8s_events params: {resourceVersion: "6621683"}
+
       d.run expect_emits: 1, timeout: 3
       events = d.events
-      expect(events.all? { |e| e[0] == 'kubernetes.events.watch'}).must_equal true
+      expect(events.all? { |e| e[0] == 'kubernetes.events'}).must_equal true
     end
 
     it "should use checkpoints for watching" do
@@ -133,6 +136,7 @@ describe Fluent::Plugin::KubernetesObjectsInput do
         CONF
 
         stub_k8s_events params: {resourceVersion: "123456"}
+        stub_k8s_events params: {resourceVersion: "6621683"}
 
         d.run expect_emits: 1, timeout: 3
       ensure
