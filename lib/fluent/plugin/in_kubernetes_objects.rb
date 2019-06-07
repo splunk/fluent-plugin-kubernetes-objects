@@ -72,9 +72,6 @@ module Fluent::Plugin
 
       desc 'A selector to restrict the list of returned objects by fields.'
       config_param :field_selector, :string, default: nil
-
-      desc 'The interval at which the objects will be watched.'
-      config_param :interval, :time, default: 15 * 60
     end
 
     config_section :storage do
@@ -177,12 +174,10 @@ module Fluent::Plugin
         o = o.to_h.dup
         o[:as] = :raw
         resource_name = o.delete(:resource_name)
-        watch_interval = o.delete(:interval)
-
         version = @storage.get(resource_name)
         o[:resource_version] = version if version
         @client.public_send("watch_#{resource_name}", o).tap do |watcher|
-          create_watcher_thread resource_name, watcher, watch_interval
+          create_watcher_thread resource_name, watcher
         end
       end
     end
@@ -227,7 +222,7 @@ module Fluent::Plugin
       end
     end
 
-    def create_watcher_thread(object_name, watcher, interval)
+    def create_watcher_thread(object_name, watcher)
       thread_create(:"watch_#{object_name}") do
         tag = generate_tag "#{object_name}.watch"
         while thread_current_running?
@@ -236,7 +231,6 @@ module Fluent::Plugin
             entity = JSON.parse(entity)
             router.emit tag, Fluent::Engine.now, entity
             @storage.put object_name, entity['object']['metadata']['resourceVersion']
-            sleep(interval)
           end
         end
       end
