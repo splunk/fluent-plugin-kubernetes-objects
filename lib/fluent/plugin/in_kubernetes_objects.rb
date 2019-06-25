@@ -72,6 +72,9 @@ module Fluent::Plugin
 
       desc 'A selector to restrict the list of returned objects by fields.'
       config_param :field_selector, :string, default: nil
+
+      desc 'The interval at which the objects will be watched.'
+      config_param :interval, :time, default: 15 * 60
     end
 
     config_section :storage do
