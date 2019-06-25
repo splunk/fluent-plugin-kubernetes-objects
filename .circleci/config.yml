@@ -51,10 +51,6 @@ jobs:
       - setup_remote_docker:
           reusable: true
       - run:
-          name: Push rubygem to s3
-          command: |
-            .circleci/push_gem.sh
-      - run:
           name: Build and push docker image to ecr
           command: |
             .circleci/build_and_push.sh
