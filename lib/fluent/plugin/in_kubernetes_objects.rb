@@ -72,9 +72,6 @@ module Fluent::Plugin
 
       desc 'A selector to restrict the list of returned objects by fields.'
       config_param :field_selector, :string, default: nil
-
-      desc 'The interval at which the objects will be watched.'
-      config_param :interval, :time, default: 15 * 60
     end
 
     config_section :storage do
@@ -102,7 +99,6 @@ module Fluent::Plugin
     end
 
     def close
-      @watchers.each &:finish if @watchers
       super
     end
 
@@ -116,6 +112,21 @@ module Fluent::Plugin
       return @tag unless @tag_prefix
 
       [@tag_prefix, item_name, @tag_suffix].join
+    end
+
+    def init_with_kubeconfig()
+      options = {}
+      config = Kubeclient::Config.read @kubeconfig
+      current_context = config.context
+
+      @client = Kubeclient::Client.new(
+        current_context.api_endpoint,
+        current_context.api_version,
+        options.merge(
+          ssl_options: current_context.ssl_options,
+          auth_options: current_context.auth_options
+        )
+      )
     end
 
     def initialize_client
@@ -173,16 +184,7 @@ module Fluent::Plugin
     end
 
     def start_watchers
-      @watchers = @watch_objects.map do |o|
-        o = o.to_h.dup
-        o[:as] = :raw
-        resource_name = o.delete(:resource_name)
-        watch_interval = o.delete(:interval)
-
-        version = @storage.get(resource_name)
-        o[:resource_version] = version if version
-          create_watcher_thread resource_name, o, watch_interval
-      end
+      @watch_objects.each(&method(:create_watcher_thread))
     end
 
     def create_pull_thread(conf)
@@ -225,19 +227,35 @@ module Fluent::Plugin
       end
     end
 
-    def create_watcher_thread(object_name, watcher, interval)
-      thread_create(:"watch_#{object_name}") do
-        @client.public_send("watch_#{object_name}", watcher).tap { |watcher|
-          tag = generate_tag "#{object_name}.watch"
-          watcher.each do |entity|
-            log.trace { "Received new object from watching #{object_name}" }
-            entity = JSON.parse(entity)
-            router.emit tag, Fluent::Engine.now, entity
-            @storage.put object_name, entity['object']['metadata']['resourceVersion']
-            sleep(interval)
+    def create_watcher_thread(conf)
+      options = conf.to_h.dup
+      options[:as] = :raw
+      resource_name = options[:resource_name]
+      version = @storage.get(resource_name)
+      if version
+        options[:resource_version] = version
+      else
+        options[:resource_version] = 0
+      end
+
+      thread_create :"watch_#{resource_name}" do
+        while thread_current_running?
+          @client.public_send("watch_#{resource_name}", options).tap do |watcher|
+            tag = generate_tag "#{resource_name}"
+            watcher.each do |entity|
+              begin
+                entity = JSON.parse(entity)
+                router.emit tag, Fluent::Engine.now, entity
+                options[:resource_version] = entity['object']['metadata']['resourceVersion']
+                @storage.put resource_name, entity['object']['metadata']['resourceVersion']
+              rescue => e
+                log.info "Got exception #{e} parsing entity #{entity}. Resetting watcher."
+              end
+            end
           end
-        }
+        end
       end
     end
   end
 end
+
