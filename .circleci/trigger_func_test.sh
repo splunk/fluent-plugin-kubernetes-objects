@@ -16,9 +16,9 @@ BUILD_NUM=$(jq -r .build_num build.json)
 TIMEOUT=20
 DONE="FALSE"
 until [ "$TIMEOUT" -lt 0 ] || [ "$DONE" == "TRUE" ]; do
-    curl https://circleci.com/api/v1/project/$ORGANIZATION/$PROJECT/$BUILD_NUM?circle-token=$CIRCLE_TOKEN > build_progress.json
-    cat build_progress.json
+    curl -s https://circleci.com/api/v1/project/$ORGANIZATION/$PROJECT/$BUILD_NUM?circle-token=$CIRCLE_TOKEN > build_progress.json
     STATUS=$(jq -r .status build_progress.json)
+    echo "STATUS = $STATUS"
     if [ "$STATUS" != "running" ] && [ "$STATUS" != "queued" ]; then
         DONE="TRUE"
     else
@@ -32,7 +32,7 @@ if [ "$DONE" == "FALSE" ]; then
     # Cancel hanging job and fail
     curl -X POST https://circleci.com/api/v1/project/$ORGANIZATION/$PROJECT/$BUILD_NUM/cancel?circle-token=$CIRCLE_TOKEN
 else
-    if [ ! "$STATUS" == "success" ]; then
+    if [ "$STATUS" != "success" ] && [ "$STATUS" != "fixed" ]; then
         echo "Functional test have failed please see:"
         echo $BUILD_URL
         exit 1
