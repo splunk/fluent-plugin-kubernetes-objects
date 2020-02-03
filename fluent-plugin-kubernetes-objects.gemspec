@@ -29,15 +29,12 @@ Gem::Specification.new do |spec|
 
   spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
-
   spec.required_ruby_version = '>= 2.3.0'
-
-  spec.add_runtime_dependency 'fluentd', '= 1.4'
-  spec.add_runtime_dependency 'kubeclient', '~> 4.2'
-
+  spec.add_runtime_dependency 'fluentd', '~> 1.9.1'
+  spec.add_runtime_dependency 'kubeclient', '~> 4.6.0'
   spec.add_development_dependency 'bundler', '~> 2.0'
   spec.add_development_dependency 'minitest', '~> 5.11'
-  spec.add_development_dependency 'rake', '~> 12.3'
+  spec.add_development_dependency 'rake', '~> 12.0'
   spec.add_development_dependency 'test-unit', '~> 3.3' # required by fluent/test.rb
   spec.add_development_dependency 'webmock', '~> 3.5'
 end
