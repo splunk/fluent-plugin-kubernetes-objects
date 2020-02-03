@@ -1,4 +1,4 @@
-.circleci/config.ymlFROM registry.access.redhat.com/ubi8/ruby-25
+FROM registry.access.redhat.com/ubi8/ruby-25
 
 MAINTAINER DataEdge DataEdge@splunk.com
 
@@ -25,6 +25,7 @@ RUN wget -O jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux6
       gem install -N fluentd:1.9.1 \
        fluent-plugin-prometheus:1.7.0 \
        fluent-plugin-record-modifier:2.1.0 \
+       fluent-plugin-jq:0.5.1 \
        fluent-plugin-splunk-hec:${VERSION} \
        oj:3.10.2 \
        multi_json:1.14.1 \
