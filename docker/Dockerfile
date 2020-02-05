@@ -22,14 +22,15 @@ COPY licenses /licenses
 RUN wget -O jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 && \
       chmod +x ./jq && \
       cp jq /usr/bin && \
-      gem install -N fluentd:1.4.0 \
-         fluent-plugin-prometheus:1.3.0 \
-         fluent-plugin-splunk-hec:${VERSION} \
-         fluent-plugin-jq:0.5.1 \
-         oj:3.7.9 \
-         multi_json:1.13.1 \
-         bigdecimal:1.4.3 \
-         kubeclient:4.3.0 && \
+      gem install -N fluentd:1.9.1 \
+       fluent-plugin-prometheus:1.7.0 \
+       fluent-plugin-record-modifier:2.1.0 \
+       fluent-plugin-jq:0.5.1 \
+       fluent-plugin-splunk-hec:${VERSION} \
+       oj:3.10.2 \
+       multi_json:1.14.1 \
+       bigdecimal:2.0.0 \
+       kubeclient:4.6.0 && \
       gem install -N /tmp/*.gem
 
 RUN groupadd -r $FLUENT_USER && \
