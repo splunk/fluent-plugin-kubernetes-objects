@@ -38,7 +38,7 @@ jobs:
       - run:
           name: Run unit tests
           command: |
-            rake test -t -v
+            bundle exec rake test -t -v
             
   func_test_master:
     docker:
