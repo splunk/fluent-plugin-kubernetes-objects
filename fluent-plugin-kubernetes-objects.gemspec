@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
     CODE_OF_CONDUCT.md README.md LICENSE
     fluent-plugin-kubernetes-objects.gemspec
     Gemfile Gemfile.lock
-    Rakefile
+    Rakefile VERSION
   ] + Dir.glob('lib/**/**').reject(&File.method(:directory?))
 
   spec.bindir        = 'exe'
