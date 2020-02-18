@@ -1,16 +1,18 @@
 FROM registry.access.redhat.com/ubi8/ruby-25
 
+ARG VERSION
+ARG FLUENTD_HEC_GEM_VERSION
+
 MAINTAINER DataEdge DataEdge@splunk.com
 
 LABEL name="Splunk Connect for Kubernetes Objects container" \
       maintainer="DataEdge@splunk.com" \
       vendor="Splunk Inc." \
-      version="1.1.3" \
-      release="1.1.3" \
+      version=${VERSION} \
+      release=${VERSION} \
       summary="Splunk Connect for Kubernetes Objects container" \
       description="Splunk Connect for Kubernetes Objects container"
 
-ARG VERSION
 ENV VERSION=${VERSION}
 ENV FLUENT_USER fluent
 
@@ -25,7 +27,7 @@ RUN wget -O jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux6
 
 COPY Gemfile* ./
 RUN gem install bundler \
-   && bundle add fluent-plugin-splunk-hec -v ${VERSION} \
+   && bundle add fluent-plugin-splunk-hec -v ${FLUENTD_HEC_GEM_VERSION} \
    && bundle exec gem install /tmp/*.gem
 
 RUN groupadd -r $FLUENT_USER && \
