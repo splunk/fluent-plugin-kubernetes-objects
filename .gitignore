@@ -10,3 +10,7 @@
 *.gem
 .DS_Store
 *.aes
+docker/licenses/
+docker/gem/
+docker/gems/
+docker/.bundle/
