@@ -1,13 +1,12 @@
 require 'simplecov'
 SimpleCov.start
 
-$LOAD_PATH.unshift File.expand_path('../lib', __dir__)
+$LOAD_PATH.unshift(File.expand_path('..', __dir__))
 
 # suppress warning, when require the 'http' library shows circle require warning
 # which is pretty annoying (kubeclient depends on http for watch_stream)
 _verbose = $VERBOSE
 $VERBOSE = nil
-require 'fluent/plugin/in_kubernetes_objects'
 $VERBOSE = _verbose
 
 require 'fluent/test'

@@ -21,7 +21,7 @@ jobs:
           root: /tmp
           paths:
             - pkg
-  test:
+  unit_test:
     docker:
       - image: circleci/ruby:2.6.1-node-browsers
     working_directory: ~/repo
@@ -38,23 +38,33 @@ jobs:
       - run:
           name: Run unit tests
           command: |
-            rake test -t -v
-
-  push:
+            bundle exec rake test -t -v
+            
+  func_test_master:
     docker:
       - image: circleci/ruby:2.6.1-node-browsers
     working_directory: ~/repo
     steps:
-      - attach_workspace:
-          at: /tmp
       - checkout
       - setup_remote_docker:
           reusable: true
       - run:
-          name: Build and push docker image to ecr
+          name: trigger
           command: |
-            .circleci/build_and_push.sh
+            .circleci/trigger_func_test.sh master
 
+  func_test_develop:
+    docker:
+      - image: circleci/ruby:2.6.1-node-browsers
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - setup_remote_docker:
+          reusable: true
+      - run:
+          name: trigger
+          command: |
+            .circleci/trigger_func_test.sh develop
   release:
     docker:
       - image: circleci/ruby:2.6.1-node-browsers
@@ -77,25 +87,67 @@ jobs:
           name: Upload gem to Github
           command: |
             .circleci/build_and_push_to_github_release.sh
-
+      - run:
+          name: Upload gem to rubygems
+          command: |
+            .circleci/push_gem_to_rubygems.sh           
+  check_version:
+    docker:
+      - image: circleci/ruby:2.6.1-node-browsers
+    working_directory: ~/repo
+    steps:
+      - attach_workspace:
+          at: /tmp
+      - checkout          
+      - setup_remote_docker:
+          reusable: true
+      - run:
+          name: Check VERSION file for change
+          command: |
+            .circleci/check_version_trigger_release.sh
 
 workflows:
   version: 2
-  build_test_push:
+  build_test:
     jobs:
-      - build
-      - test:
+      - build:
+          filters:
+            branches:
+              ignore: 
+                - /^release\/.*/
+                - master
+      - unit_test:
           requires:
             - build
-      - push:
+      # - func_test_master:
+      #     requires:
+      #       - unit_test
+      # - func_test_develop:
+      #     requires:
+      #       - unit_test
+      - check_version:
           requires:
-            - test
+            - unit_test
+            # - func_test_develop
           filters:
             branches:
               only: develop
-      - release:
-          requires:
-            - test
+  release:
+    jobs:
+      - build:
           filters:
             branches:
               only: master
+      - unit_test:
+          requires:
+            - build
+      # - func_test_master:
+      #     requires:
+      #       - unit_test
+      # - func_test_develop:
+      #     requires:
+      #       - unit_test
+      - release:
+          requires:
+            - unit_test
+            # - func_test_develop

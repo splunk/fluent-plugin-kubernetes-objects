@@ -1,4 +1,5 @@
 require "test_helper"
+require 'fluent/plugin/in_kubernetes_objects.rb'
 
 describe Fluent::Plugin::KubernetesObjectsInput do
   include Fluent::Test::Helpers
