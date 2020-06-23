@@ -16,4 +16,4 @@ VERSION=`cat VERSION`
 echo "Copying licenses to be included in the docker image..."
 mkdir -p docker/licenses
 cp -rp LICENSE docker/licenses/
-docker build --build-arg VERSION=$VERSION --no-cache -t splunk/kube-objects:$TAG ./docker
+docker build --no-cache --pull --build-arg VERSION=$VERSION -t splunk/kube-objects:$TAG ./docker

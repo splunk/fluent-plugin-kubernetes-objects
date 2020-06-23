@@ -2,8 +2,6 @@ FROM registry.access.redhat.com/ubi8/ruby-25
 
 ARG VERSION
 
-MAINTAINER DataEdge DataEdge@splunk.com
-
 LABEL name="Splunk Connect for Kubernetes Objects container" \
       maintainer="DataEdge@splunk.com" \
       vendor="Splunk Inc." \
@@ -26,8 +24,8 @@ RUN wget -O jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux6
 
 COPY Gemfile* ./
 RUN gem install bundler \
-   && bundle install \
-   && bundle exec gem install /tmp/*.gem
+   && gem unpack /tmp/*.gem --target gem \
+   && bundle install 
 
 RUN groupadd -r $FLUENT_USER && \
   useradd -r -g $FLUENT_USER $FLUENT_USER && \
@@ -35,4 +33,4 @@ RUN groupadd -r $FLUENT_USER && \
   chown -R $FLUENT_USER /fluentd && chgrp -R $FLUENT_USER /fluentd
 
 USER $FLUENT_USER
-CMD exec fluentd -c /fluentd/etc/fluent.conf
+CMD bundle exec fluentd -c /fluentd/etc/fluent.conf
