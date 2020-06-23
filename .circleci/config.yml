@@ -119,35 +119,9 @@ workflows:
       - unit_test:
           requires:
             - build
-      # - func_test_master:
-      #     requires:
-      #       - unit_test
-      # - func_test_develop:
-      #     requires:
-      #       - unit_test
-      - check_version:
+      - func_test_master:
           requires:
             - unit_test
-            # - func_test_develop
-          filters:
-            branches:
-              only: develop
-  release:
-    jobs:
-      - build:
-          filters:
-            branches:
-              only: master
-      - unit_test:
-          requires:
-            - build
-      # - func_test_master:
-      #     requires:
-      #       - unit_test
-      # - func_test_develop:
-      #     requires:
-      #       - unit_test
-      - release:
+      - func_test_develop:
           requires:
             - unit_test
-            # - func_test_develop
