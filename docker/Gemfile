@@ -14,6 +14,6 @@ gem 'bigdecimal', '=2.0.0'
 gem 'kubeclient', '=4.6.0'
 gem 'http_parser.rb', '=0.5.3'
 
-gem "fluent-plugin-splunk-hec", ">= 1.2.1"
+gem "fluent-plugin-splunk-hec", ">= 1.2.3"
 
 gem 'fluent-plugin-kubernetes-objects', path: 'gem/'
