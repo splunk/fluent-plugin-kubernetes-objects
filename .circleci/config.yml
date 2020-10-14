@@ -40,7 +40,7 @@ jobs:
           command: |
             bundle exec rake test -t -v
             
-  func_test_master:
+  func_test_main:
     docker:
       - image: circleci/ruby:2.6.1-node-browsers
     working_directory: ~/repo
@@ -51,7 +51,7 @@ jobs:
       - run:
           name: trigger
           command: |
-            .circleci/trigger_func_test.sh master
+            .circleci/trigger_func_test.sh main
 
   func_test_develop:
     docker:
@@ -65,46 +65,6 @@ jobs:
           name: trigger
           command: |
             .circleci/trigger_func_test.sh develop
-  release:
-    docker:
-      - image: circleci/ruby:2.6.1-node-browsers
-    working_directory: ~/repo
-    steps:
-      - attach_workspace:
-          at: /tmp
-      - checkout
-      - setup_remote_docker:
-          reusable: true
-      - run:
-          name: Install dependencies
-          command: |
-            .circleci/install_dep.sh
-      - run:
-          name: Build and push docker image to dockerhub
-          command: |
-            .circleci/build_and_push_to_dockerhub.sh
-      - run:
-          name: Upload gem to Github
-          command: |
-            .circleci/build_and_push_to_github_release.sh
-      - run:
-          name: Upload gem to rubygems
-          command: |
-            .circleci/push_gem_to_rubygems.sh           
-  check_version:
-    docker:
-      - image: circleci/ruby:2.6.1-node-browsers
-    working_directory: ~/repo
-    steps:
-      - attach_workspace:
-          at: /tmp
-      - checkout          
-      - setup_remote_docker:
-          reusable: true
-      - run:
-          name: Check VERSION file for change
-          command: |
-            .circleci/check_version_trigger_release.sh
 
 workflows:
   version: 2
@@ -115,11 +75,11 @@ workflows:
             branches:
               ignore: 
                 - /^release\/.*/
-                - master
+                - main
       - unit_test:
           requires:
             - build
-      - func_test_master:
+      - func_test_main:
           requires:
             - unit_test
       - func_test_develop:
