@@ -2,7 +2,7 @@ PATH
   remote: gem
   specs:
     fluent-plugin-kubernetes-objects (1.1.5)
-      fluentd (~> 1.9.1)
+      fluentd (>= 1.9.1)
       http_parser.rb (= 0.5.3)
       kubeclient (~> 4.6.0)
 
@@ -21,7 +21,7 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     aes_key_wrap (1.1.0)
     attr_required (1.0.1)
-    bigdecimal (2.0.0)
+    bigdecimal (3.0.0)
     bindata (2.4.8)
     concurrent-ruby (1.1.8)
     connection_pool (2.2.3)
@@ -35,8 +35,8 @@ GEM
     fluent-plugin-jq (0.5.1)
       fluentd (>= 0.14.10, < 2)
       multi_json (~> 1.13)
-    fluent-plugin-prometheus (1.7.0)
-      fluentd (>= 0.14.20, < 2)
+    fluent-plugin-prometheus (1.8.5)
+      fluentd (>= 1.9.1, < 2)
       prometheus-client (< 0.10)
     fluent-plugin-record-modifier (2.1.0)
       fluentd (>= 1.0, < 2)
@@ -46,11 +46,12 @@ GEM
       net-http-persistent (~> 3.1)
       openid_connect (~> 1.1.8)
       prometheus-client (< 0.10.0)
-    fluentd (1.9.1)
+    fluentd (1.12.1)
+      bundler
       cool.io (>= 1.4.5, < 2.0.0)
       http_parser.rb (>= 0.5.1, < 0.7.0)
       msgpack (>= 1.3.1, < 2.0.0)
-      serverengine (>= 2.0.4, < 3.0.0)
+      serverengine (>= 2.2.2, < 3.0.0)
       sigdump (~> 0.2.2)
       strptime (>= 0.2.2, < 1.0.0)
       tzinfo (>= 1.0, < 3.0)
@@ -83,15 +84,15 @@ GEM
       mini_mime (>= 0.1.1)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2021.0212)
+    mime-types-data (3.2021.0225)
     mini_mime (1.0.2)
-    minitest (5.14.3)
+    minitest (5.14.4)
     msgpack (1.4.2)
-    multi_json (1.14.1)
+    multi_json (1.15.0)
     net-http-persistent (3.1.0)
       connection_pool (~> 2.2)
     netrc (0.11.0)
-    oj (3.10.2)
+    oj (3.11.2)
     openid_connect (1.1.8)
       activemodel
       attr_required (>= 1.0.0)
@@ -151,17 +152,17 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bigdecimal (= 2.0.0)
-  fluent-plugin-jq (= 0.5.1)
+  bigdecimal (>= 2.0.0)
+  fluent-plugin-jq (>= 0.5.1)
   fluent-plugin-kubernetes-objects!
-  fluent-plugin-prometheus (= 1.7.0)
-  fluent-plugin-record-modifier (= 2.1.0)
+  fluent-plugin-prometheus (>= 1.7.0)
+  fluent-plugin-record-modifier (>= 2.1.0)
   fluent-plugin-splunk-hec (>= 1.2.3)
-  fluentd (= 1.9.1)
-  http_parser.rb (= 0.5.3)
-  kubeclient (= 4.6.0)
-  multi_json (= 1.14.1)
-  oj (= 3.10.2)
+  fluentd (>= 1.9.1)
+  http_parser.rb (>= 0.5.3)
+  kubeclient (>= 4.6.0)
+  multi_json (>= 1.14.1)
+  oj (>= 3.10.2)
 
 BUNDLED WITH
    2.1.4
