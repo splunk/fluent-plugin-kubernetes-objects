@@ -44,7 +44,7 @@ GEM
       prometheus-client (< 0.10)
     fluent-plugin-record-modifier (2.1.0)
       fluentd (>= 1.0, < 2)
-    fluent-plugin-splunk-hec (1.2.4)
+    fluent-plugin-splunk-hec (1.2.5)
       fluentd (>= 1.4)
       multi_json (~> 1.13)
       net-http-persistent (~> 3.1)
