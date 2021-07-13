@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # for kubernetes log collection agent
 # List all required gems here and install via bundler to resolve dependencies
 gem "fluentd", "= 1.11.5" 
-gem "fluent-plugin-prometheus", "= 1.8.5"
+gem "fluent-plugin-prometheus", ">= 2.0"
 gem "fluent-plugin-record-modifier", "= 2.1.0"
 gem "fluent-plugin-kubernetes_metadata_filter", "=2.5.3"
 gem "fluent-plugin-jq", "= 0.5.1"
