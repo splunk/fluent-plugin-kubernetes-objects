@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fluent-plugin-kubernetes-objects (1.1.6)
+    fluent-plugin-kubernetes-objects (1.1.7)
       fluentd (>= 1.9.1)
       http_parser.rb (= 0.5.3)
       kubeclient (~> 4.6.0)
@@ -106,4 +106,4 @@ DEPENDENCIES
   webmock (~> 3.5)
 
 BUNDLED WITH
-   2.2.23
+   2.2.24
