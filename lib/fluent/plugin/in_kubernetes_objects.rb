@@ -245,15 +245,19 @@ module Fluent::Plugin
         while thread_current_running?
           @client.public_send("watch_#{resource_name}", options).tap do |watcher|
             tag = generate_tag "#{resource_name}"
-            watcher.each do |entity|
-              begin
-                entity = JSON.parse(entity)
-                router.emit tag, Fluent::Engine.now, entity
-                options[:resource_version] = entity['object']['metadata']['resourceVersion']
-                @storage.put resource_name, entity['object']['metadata']['resourceVersion']
-              rescue => e
-                log.info "Got exception #{e} parsing entity #{entity}. Resetting watcher."
+            begin
+              watcher.each do |entity|
+                begin
+                  entity = JSON.parse(entity)
+                  router.emit tag, Fluent::Engine.now, entity
+                  options[:resource_version] = entity['object']['metadata']['resourceVersion']
+                  @storage.put resource_name, entity['object']['metadata']['resourceVersion']
+                rescue => e
+                  log.info "Got exception #{e} parsing entity #{entity}. Resetting watcher."
+                end
               end
+            rescue => e
+              log.info "Got exception #{e}. Resetting watcher."
             end
           end
         end
