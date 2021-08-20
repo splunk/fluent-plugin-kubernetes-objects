@@ -14,11 +14,13 @@ cd /opt
 git clone https://github.com/splunk/splunk-connect-for-kubernetes.git
 cd splunk-connect-for-kubernetes
 
+sed -i 's/name: splunk\/kube-objects/repository: kube-objects/' ci_scripts/sck_values.yml
+cat ci_scripts/sck_values.yml
+
 echo "Deploying k8s-connect with latest changes"
 helm install ci-sck --set global.splunk.hec.token=$CI_SPLUNK_HEC_TOKEN \
 --set global.splunk.hec.host=$CI_SPLUNK_HOST \
 --set kubelet.serviceMonitor.https=true \
---set splunk-kubernetes-objects.image.tag=$GITHUB_RUN_ID \
 --set splunk-kubernetes-objects.image.pullPolicy=IfNotPresent \
 -f ci_scripts/sck_values.yml helm-chart/splunk-connect-for-kubernetes
 #wait for deployment to finish

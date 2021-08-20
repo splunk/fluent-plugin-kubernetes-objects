@@ -17,15 +17,22 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+          ruby-version: 2.6
 
       - name: Install dependencies
         run: |
-          ci_scripts/install_dep.sh
+          sudo ci_scripts/install_dep.sh
 
       - name: Builder
         run: |
           rake build -t -v
           cp -R pkg /tmp
+
+      - name: Cache pkg
+        uses: actions/cache@v1
+        with:
+          path: /tmp
+          key: ${{ runner.os }}-build
 
   unit-test:
     runs-on: ubuntu-latest
@@ -37,12 +44,14 @@ jobs:
 
       - name: Install dependencies
         run: |
-          ci_scripts/install_dep.sh
+          sudo ci_scripts/install_dep.sh
 
-      - name: Run unit tests
-        uses: actions/cache@v2
+      - uses: actions/cache@v2
         with:
           path: /tmp
+          key: ${{ runner.os }}-build
+
+      - name: Run unit tests
         run: |
           bundle exec rake test -t -v
 
@@ -68,7 +77,9 @@ jobs:
 
       - name: Build kube-objects image
         run: |
-          source docker/build.sh $GITHUB_RUN_ID
+          sed -i 's/VERSION=$VERSION -t splunk\/kube-objects:$TAG .\/docker/VERSION=$VERSION -t kube-objects:$TAG .\/docker/' docker/build.sh
+          sudo docker/build.sh $GITHUB_RUN_ID
+          docker image ls
 
       - name: Setup Minikube
         run: |
@@ -126,10 +137,8 @@ jobs:
           ci_scripts/deploy_connector.sh
 
       - name: Deploy log generator
-        uses: actions/cache@v1
-        with:
-          path: /opt/splunk-connect-for-kubernetes
         run: |
+          cd /opt/splunk-connect-for-kubernetes
           kubectl apply -f test/test_setup.yaml
           sleep 60
 
@@ -138,10 +147,10 @@ jobs:
           python-version: 3.7
 
       - name: Run functional tests
-        uses: actions/cache@v1
-        with:
-          path: /opt/splunk-connect-for-kubernetes
         run: |
+          echo "check the pods"
+          kubectl get pods -A
+          cd /opt/splunk-connect-for-kubernetes
           kubectl get nodes
           export PYTHONWARNINGS="ignore:Unverified HTTPS request"
           export CI_SPLUNK_HOST=$(kubectl get pod splunk --template={{.status.podIP}})
@@ -154,7 +163,3 @@ jobs:
           	--splunk-user admin \
           	--splunk-password $CI_SPLUNK_PASSWORD \
           	-p no:warnings -s
-
-
-
-
