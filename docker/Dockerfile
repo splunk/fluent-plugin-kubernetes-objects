@@ -26,8 +26,8 @@ RUN yum update -y \
    && gem install bundler \
    && gem unpack /tmp/*.gem --target gem \
    && bundle install \
-   && rpm -e --nodeps python3-pip-wheels
-   
+   && rpm -e --nodeps python3-pip-wheel
+
 RUN groupadd -r $FLUENT_USER && \
   useradd -r -g $FLUENT_USER $FLUENT_USER && \
   mkdir -p /fluentd/log fluentd/etc /fluentd/plugins &&\
