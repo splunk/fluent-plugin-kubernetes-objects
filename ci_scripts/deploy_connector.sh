@@ -22,6 +22,7 @@ helm install ci-sck --set global.splunk.hec.token=$CI_SPLUNK_HEC_TOKEN \
 --set global.splunk.hec.host=$CI_SPLUNK_HOST \
 --set kubelet.serviceMonitor.https=true \
 --set splunk-kubernetes-objects.image.pullPolicy=IfNotPresent \
+--set splunk-kubernetes-objects.image.tag=$GITHUB_RUN_ID \
 -f ci_scripts/sck_values.yml helm-chart/splunk-connect-for-kubernetes
 #wait for deployment to finish
 until kubectl get pod | grep Running | [[ $(wc -l) == 4 ]]; do
