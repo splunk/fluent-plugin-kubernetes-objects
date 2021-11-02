@@ -79,7 +79,7 @@ jobs:
         id: prep
         run: |
           VERSION=`cat VERSION`
-          TAGS=splunk/k8s-metrics:$GITHUB_RUN_ID
+          TAGS=splunk/kube-objects:recent
           echo ::set-output name=tags::${TAGS}
           echo ::set-output name=version::${VERSION}
 
