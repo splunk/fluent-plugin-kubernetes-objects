@@ -12,11 +12,9 @@ clean: clean_pkg clean_gems
 build: clean_pkg 
 	@bundle exec rake build
 
-docker: build install-deps
-	@cp pkg/fluent-plugin-*.gem docker
-	@mkdir -p docker/licenses
-	@cp -rp LICENSE docker/licenses/
-	@docker build --no-cache --pull --build-arg VERSION=$(VERSION) -t splunk/kube-objects:$(VERSION) ./docker
+.PHONY: docker
+docker: 
+	@docker build --no-cache --pull --build-arg VERSION=$(VERSION) -t splunk/kube-objects:$(VERSION) . -f docker/Dockerfile
 
 unit-test:
 	@bundle exec rake test
