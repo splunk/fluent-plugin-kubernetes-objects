@@ -150,6 +150,7 @@ GEM
       httpclient (>= 2.4)
     webrick (1.7.0)
     yajl-ruby (1.4.1)
+    zeitwerk (2.5.1)
 
 PLATFORMS
   ruby
