@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fluent-plugin-kubernetes-objects (1.1.8)
+    fluent-plugin-kubernetes-objects (1.1.9)
       fluentd (>= 1.9.1)
       http_parser.rb (= 0.5.3)
       kubeclient (~> 4.6.0)
