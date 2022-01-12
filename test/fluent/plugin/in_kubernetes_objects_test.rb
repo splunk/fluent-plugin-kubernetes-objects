@@ -144,5 +144,28 @@ describe Fluent::Plugin::KubernetesObjectsInput do
         f.unlink
       end
     end
+    it "checks for invalid pull request" do
+      d = create_input_driver(<<~CONF)
+      kubernetes_url #{k8s_url}
+      <pull>
+      resource_name fakeResource
+      </pull>
+      CONF
+
+      d.run expect_emits: 0, timeout: 3
+      
+      expect(d.logs.any? { |log| log.include? "resource 'fakeResource' not found." }).must_equal(true)
+    end
+    it "checks for invalid watch request" do
+      d = create_input_driver(<<~CONF)
+      kubernetes_url #{k8s_url}
+      <watch>
+      resource_name fakeResource
+      </watch>
+      CONF
+
+      d.run expect_emits: 0, timeout: 3
+      expect(d.logs.any? { |log| log.include? "resource 'fakeResource' not found." }).must_equal(true)
+    end
   end
 end
