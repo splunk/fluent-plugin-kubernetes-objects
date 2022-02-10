@@ -131,7 +131,6 @@ jobs:
       - name: Install Splunk
         run: |
           # Wait until minikube is ready
-          kubectl apply -f https://docs.projectcalico.org/v3.14/manifests/calico.yaml
           export JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}'
           until kubectl get nodes -o jsonpath="$JSONPATH" 2>&1 | grep -q "Ready=True"; do
             echo "wait for minikube ready ..."
