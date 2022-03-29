@@ -57,8 +57,9 @@ describe Fluent::Plugin::KubernetesObjectsInput do
       puts 'Test: should use pick the right path'
       ENV['KUBERNETES_SERVICE_HOST'] = k8s_host
       ENV['KUBERNETES_SERVICE_PORT'] = k8s_port
-      expect(create_input_driver(<<~CONF).instance.kubernetes_url).must_equal k8s_url('apis')
-      api_version apps/v1
+      expect(create_input_driver(<<~CONF).instance.kubernetes_url).must_equal k8s_url('apis/apps')
+      api_endpoint apis/apps
+      api_version v1
       <pull>
       resource_name deployments
       </pull>
