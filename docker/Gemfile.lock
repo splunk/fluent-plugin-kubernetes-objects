@@ -1,7 +1,7 @@
 PATH
   remote: gem
   specs:
-    fluent-plugin-kubernetes-objects (1.1.10)
+    fluent-plugin-kubernetes-objects (1.1.11)
       fluentd (>= 1.9.1)
       http_parser.rb (= 0.5.3)
       kubeclient (~> 4.9.3)
@@ -43,7 +43,7 @@ GEM
       prometheus-client (>= 2.1.0)
     fluent-plugin-record-modifier (2.1.0)
       fluentd (>= 1.0, < 2)
-    fluent-plugin-splunk-hec (1.2.11)
+    fluent-plugin-splunk-hec (1.2.12)
       fluentd (>= 1.4)
       multi_json (~> 1.13)
       net-http-persistent (~> 3.1)
