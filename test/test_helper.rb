@@ -54,6 +54,9 @@ module PluginTestHelper
     stub_k8s_nodes
     stub_k8s_pods
     stub_k8s_events
+    stub_k8s_apps
+    stub_k8s_apps_v1
+    stub_k8s_apps_v1_namespace
   end
 
   def stub_k8s_api
@@ -65,6 +68,24 @@ module PluginTestHelper
   def stub_k8s_apis
     File.open(File.expand_path('apis.json', __dir__)).tap do |f|
       stub_request(:get, k8s_url('apis')).to_return(body: f.read)
+    end.close
+  end
+
+  def stub_k8s_apps
+    File.open(File.expand_path('apps.json', __dir__)).tap do |f|
+      stub_request(:get, k8s_url('apis/apps')).to_return(body: f.read)
+    end.close
+  end
+
+  def stub_k8s_apps_v1
+    File.open(File.expand_path('apps-v1.json', __dir__)).tap do |f|
+      stub_request(:get, k8s_url('apis/apps/v1')).to_return(body: f.read)
+    end.close
+  end
+
+  def stub_k8s_apps_v1_namespace
+    File.open(File.expand_path('apps-v1-namespace.json', __dir__)).tap do |f|
+      stub_request(:get, k8s_url('apis/apps')).to_return(body: f.read)
     end.close
   end
 

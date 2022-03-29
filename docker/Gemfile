@@ -11,7 +11,7 @@ gem "fluent-plugin-jq", "= 0.5.1"
 gem "oj", "= 3.10.18"
 gem 'multi_json', '>= 1.14.1'
 gem 'bigdecimal', '>= 2.0.0'
-gem 'kubeclient', '>= 4.6.0'
+gem 'kubeclient', '>= 4.9.3'
 gem 'http_parser.rb', '>= 0.5.3'
 
 gem "fluent-plugin-splunk-hec", ">= 1.2.5"
