@@ -43,7 +43,7 @@ RUN yum update -y \
    && bundle install \
    && bundle update i18n \
    && gem uninstall -i /usr/share/gems i18n --version 1.8.11 \
-   && rpm -e --nodeps python3-pip-wheel python3-urllib3-* python3-requests-* python3-libxml2-* python3-dmidecode-* subscription-manager-* libwebp-* libwebp-devel-*  glib2-* libjpeg-turbo-devel-* libjpeg-turbo-* mariadb-connector-c-config-* mariadb-connector-c-* mariadb-connector-c-devel-* rsync-* sqlite-libs-* sqlite-devel-* sqlite-* libxml2-* libxml2-devel-* libX11-* libX11-common-* libX11-devel-* libX11-xcb-* nettle-* libsolv-* file-libs-* dbus-daemon-* tar-* qt5-srpm-macros-* perl-parent-*  git-* bsdtar-* openssh-clients-* json-c-* binutils-* libtiff-devel-* libtiff-* || true
+   && rpm -e --nodeps python3-pip-wheel python3-urllib3-* python3-requests-* python3-libxml2-* python3-dmidecode-* subscription-manager-* libwebp-* libwebp-devel-* libjpeg-turbo-devel-* libjpeg-turbo-* mariadb-connector-c-config-* mariadb-connector-c-* mariadb-connector-c-devel-* rsync-*  libX11-* libX11-common-* libX11-devel-* libX11-xcb-*  dbus-daemon-* tar-* qt5-srpm-macros-* perl-parent-*  git-* bsdtar-* openssh-clients-* binutils-* libtiff-devel-* libtiff-* || true
 
 RUN groupadd -r $FLUENT_USER && \
   useradd -r -g $FLUENT_USER $FLUENT_USER && \

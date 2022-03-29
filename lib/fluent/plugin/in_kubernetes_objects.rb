@@ -20,6 +20,9 @@ module Fluent::Plugin
     desc 'Kubernetes API version.'
     config_param :api_version, :string, default: 'v1'
 
+    desc 'Kubernetes API endpoint.'
+    config_param :api_endpoint, :string, default: 'api'
+
     desc 'Path to the certificate file for this client.'
     config_param :client_cert, :string, default: nil
 
@@ -139,7 +142,7 @@ module Fluent::Plugin
         env_host = ENV['KUBERNETES_SERVICE_HOST']
         env_port = ENV['KUBERNETES_SERVICE_PORT']
         if env_host && env_port
-          @kubernetes_url = "https://#{env_host}:#{env_port}/#{@api_version == 'v1' ? 'api' : 'apis'}"
+          @kubernetes_url = "https://#{env_host}:#{env_port}/#{@api_endpoint.delete_prefix('/')}"
         end
       end
 

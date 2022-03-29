@@ -1,0 +1,806 @@
+{
+  "kind": "DeploymentList",
+  "apiVersion": "apps/v1",
+  "metadata": {
+    "resourceVersion": "20030"
+  },
+  "items": [
+    {
+      "metadata": {
+        "name": "sck-splunk-kubernetes-objects",
+        "namespace": "default",
+        "uid": "09819f91-bc02-4896-b3e9-fd237da9322a",
+        "resourceVersion": "18812",
+        "generation": 1,
+        "creationTimestamp": "2022-03-28T12:12:10Z",
+        "labels": {
+          "app": "splunk-kubernetes-objects",
+          "app.kubernetes.io/managed-by": "Helm",
+          "chart": "splunk-kubernetes-objects-1.4.13",
+          "heritage": "Helm",
+          "release": "sck"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "meta.helm.sh/release-name": "sck",
+          "meta.helm.sh/release-namespace": "default"
+        },
+        "managedFields": [
+          {
+            "manager": "helm",
+            "operation": "Update",
+            "apiVersion": "apps/v1",
+            "time": "2022-03-28T12:12:10Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  ".": {},
+                  "f:meta.helm.sh/release-name": {},
+                  "f:meta.helm.sh/release-namespace": {}
+                },
+                "f:labels": {
+                  ".": {},
+                  "f:app": {},
+                  "f:app.kubernetes.io/managed-by": {},
+                  "f:chart": {},
+                  "f:heritage": {},
+                  "f:release": {}
+                }
+              },
+              "f:spec": {
+                "f:progressDeadlineSeconds": {},
+                "f:replicas": {},
+                "f:revisionHistoryLimit": {},
+                "f:selector": {},
+                "f:strategy": {
+                  "f:rollingUpdate": {
+                    ".": {},
+                    "f:maxSurge": {},
+                    "f:maxUnavailable": {}
+                  },
+                  "f:type": {}
+                },
+                "f:template": {
+                  "f:metadata": {
+                    "f:annotations": {
+                      ".": {},
+                      "f:checksum/config": {}
+                    },
+                    "f:labels": {
+                      ".": {},
+                      "f:app": {},
+                      "f:engine": {},
+                      "f:release": {}
+                    }
+                  },
+                  "f:spec": {
+                    "f:containers": {
+                      "k:{\"name\":\"splunk-fluentd-k8s-objects\"}": {
+                        ".": {},
+                        "f:env": {
+                          ".": {},
+                          "k:{\"name\":\"MY_NAMESPACE\"}": {
+                            ".": {},
+                            "f:name": {},
+                            "f:valueFrom": {
+                              ".": {},
+                              "f:fieldRef": {}
+                            }
+                          },
+                          "k:{\"name\":\"MY_POD_NAME\"}": {
+                            ".": {},
+                            "f:name": {},
+                            "f:valueFrom": {
+                              ".": {},
+                              "f:fieldRef": {}
+                            }
+                          },
+                          "k:{\"name\":\"NODE_NAME\"}": {
+                            ".": {},
+                            "f:name": {},
+                            "f:valueFrom": {
+                              ".": {},
+                              "f:fieldRef": {}
+                            }
+                          },
+                          "k:{\"name\":\"SPLUNK_HEC_TOKEN\"}": {
+                            ".": {},
+                            "f:name": {},
+                            "f:valueFrom": {
+                              ".": {},
+                              "f:secretKeyRef": {}
+                            }
+                          }
+                        },
+                        "f:image": {},
+                        "f:imagePullPolicy": {},
+                        "f:livenessProbe": {
+                          ".": {},
+                          "f:failureThreshold": {},
+                          "f:httpGet": {
+                            ".": {},
+                            "f:path": {},
+                            "f:port": {},
+                            "f:scheme": {}
+                          },
+                          "f:initialDelaySeconds": {},
+                          "f:periodSeconds": {},
+                          "f:successThreshold": {},
+                          "f:timeoutSeconds": {}
+                        },
+                        "f:name": {},
+                        "f:resources": {
+                          ".": {},
+                          "f:requests": {
+                            ".": {},
+                            "f:cpu": {},
+                            "f:memory": {}
+                          }
+                        },
+                        "f:securityContext": {
+                          ".": {},
+                          "f:runAsNonRoot": {}
+                        },
+                        "f:terminationMessagePath": {},
+                        "f:terminationMessagePolicy": {},
+                        "f:volumeMounts": {
+                          ".": {},
+                          "k:{\"mountPath\":\"/fluentd/etc\"}": {
+                            ".": {},
+                            "f:mountPath": {},
+                            "f:name": {}
+                          },
+                          "k:{\"mountPath\":\"/fluentd/etc/splunk\"}": {
+                            ".": {},
+                            "f:mountPath": {},
+                            "f:name": {},
+                            "f:readOnly": {}
+                          }
+                        }
+                      }
+                    },
+                    "f:dnsPolicy": {},
+                    "f:nodeSelector": {},
+                    "f:restartPolicy": {},
+                    "f:schedulerName": {},
+                    "f:securityContext": {},
+                    "f:serviceAccount": {},
+                    "f:serviceAccountName": {},
+                    "f:terminationGracePeriodSeconds": {},
+                    "f:volumes": {
+                      ".": {},
+                      "k:{\"name\":\"conf-configmap\"}": {
+                        ".": {},
+                        "f:configMap": {
+                          ".": {},
+                          "f:defaultMode": {},
+                          "f:name": {}
+                        },
+                        "f:name": {}
+                      },
+                      "k:{\"name\":\"secrets\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:secret": {
+                          ".": {},
+                          "f:defaultMode": {},
+                          "f:secretName": {}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "manager": "kube-controller-manager",
+            "operation": "Update",
+            "apiVersion": "apps/v1",
+            "time": "2022-03-28T12:12:11Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  "f:deployment.kubernetes.io/revision": {}
+                }
+              },
+              "f:status": {
+                "f:availableReplicas": {},
+                "f:conditions": {
+                  ".": {},
+                  "k:{\"type\":\"Available\"}": {
+                    ".": {},
+                    "f:lastTransitionTime": {},
+                    "f:lastUpdateTime": {},
+                    "f:message": {},
+                    "f:reason": {},
+                    "f:status": {},
+                    "f:type": {}
+                  },
+                  "k:{\"type\":\"Progressing\"}": {
+                    ".": {},
+                    "f:lastTransitionTime": {},
+                    "f:lastUpdateTime": {},
+                    "f:message": {},
+                    "f:reason": {},
+                    "f:status": {},
+                    "f:type": {}
+                  }
+                },
+                "f:observedGeneration": {},
+                "f:readyReplicas": {},
+                "f:replicas": {},
+                "f:updatedReplicas": {}
+              }
+            },
+            "subresource": "status"
+          }
+        ]
+      },
+      "spec": {
+        "replicas": 1,
+        "selector": {
+          "matchLabels": {
+            "app": "splunk-kubernetes-objects",
+            "engine": "fluentd",
+            "release": "sck"
+          }
+        },
+        "template": {
+          "metadata": {
+            "creationTimestamp": null,
+            "labels": {
+              "app": "splunk-kubernetes-objects",
+              "engine": "fluentd",
+              "release": "sck"
+            },
+            "annotations": {
+              "checksum/config": "0448623a3086ce1dee0966dd304e5e7859039a38d06be17f716bfea1777263b5"
+            }
+          },
+          "spec": {
+            "volumes": [
+              {
+                "name": "conf-configmap",
+                "configMap": {
+                  "name": "sck-splunk-kubernetes-objects",
+                  "defaultMode": 420
+                }
+              },
+              {
+                "name": "secrets",
+                "secret": {
+                  "secretName": "splunk-kubernetes-objects",
+                  "defaultMode": 420
+                }
+              }
+            ],
+            "containers": [
+              {
+                "name": "splunk-fluentd-k8s-objects",
+                "image": "docker.io/splunk/kube-objects:1.1.10",
+                "env": [
+                  {
+                    "name": "MY_NAMESPACE",
+                    "valueFrom": {
+                      "fieldRef": {
+                        "apiVersion": "v1",
+                        "fieldPath": "metadata.namespace"
+                      }
+                    }
+                  },
+                  {
+                    "name": "MY_POD_NAME",
+                    "valueFrom": {
+                      "fieldRef": {
+                        "apiVersion": "v1",
+                        "fieldPath": "metadata.name"
+                      }
+                    }
+                  },
+                  {
+                    "name": "NODE_NAME",
+                    "valueFrom": {
+                      "fieldRef": {
+                        "apiVersion": "v1",
+                        "fieldPath": "spec.nodeName"
+                      }
+                    }
+                  },
+                  {
+                    "name": "SPLUNK_HEC_TOKEN",
+                    "valueFrom": {
+                      "secretKeyRef": {
+                        "name": "splunk-kubernetes-objects",
+                        "key": "splunk_hec_token"
+                      }
+                    }
+                  }
+                ],
+                "resources": {
+                  "requests": {
+                    "cpu": "100m",
+                    "memory": "200Mi"
+                  }
+                },
+                "volumeMounts": [
+                  {
+                    "name": "conf-configmap",
+                    "mountPath": "/fluentd/etc"
+                  },
+                  {
+                    "name": "secrets",
+                    "readOnly": true,
+                    "mountPath": "/fluentd/etc/splunk"
+                  }
+                ],
+                "livenessProbe": {
+                  "httpGet": {
+                    "path": "/api/plugins.json",
+                    "port": 24220,
+                    "scheme": "HTTP"
+                  },
+                  "initialDelaySeconds": 60,
+                  "timeoutSeconds": 1,
+                  "periodSeconds": 60,
+                  "successThreshold": 1,
+                  "failureThreshold": 3
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "imagePullPolicy": "IfNotPresent",
+                "securityContext": {
+                  "runAsNonRoot": false
+                }
+              }
+            ],
+            "restartPolicy": "Always",
+            "terminationGracePeriodSeconds": 30,
+            "dnsPolicy": "ClusterFirst",
+            "nodeSelector": {
+              "beta.kubernetes.io/os": "linux"
+            },
+            "serviceAccountName": "sck-splunk-kubernetes-objects",
+            "serviceAccount": "sck-splunk-kubernetes-objects",
+            "securityContext": {},
+            "schedulerName": "default-scheduler"
+          }
+        },
+        "strategy": {
+          "type": "RollingUpdate",
+          "rollingUpdate": {
+            "maxUnavailable": "25%",
+            "maxSurge": "25%"
+          }
+        },
+        "revisionHistoryLimit": 10,
+        "progressDeadlineSeconds": 600
+      },
+      "status": {
+        "observedGeneration": 1,
+        "replicas": 1,
+        "updatedReplicas": 1,
+        "readyReplicas": 1,
+        "availableReplicas": 1,
+        "conditions": [
+          {
+            "type": "Available",
+            "status": "True",
+            "lastUpdateTime": "2022-03-28T12:12:11Z",
+            "lastTransitionTime": "2022-03-28T12:12:11Z",
+            "reason": "MinimumReplicasAvailable",
+            "message": "Deployment has minimum availability."
+          },
+          {
+            "type": "Progressing",
+            "status": "True",
+            "lastUpdateTime": "2022-03-28T12:12:11Z",
+            "lastTransitionTime": "2022-03-28T12:12:10Z",
+            "reason": "NewReplicaSetAvailable",
+            "message": "ReplicaSet \"sck-splunk-kubernetes-objects-84f69bcff9\" has successfully progressed."
+          }
+        ]
+      }
+    },
+    {
+      "metadata": {
+        "name": "coredns",
+        "namespace": "kube-system",
+        "uid": "3e20e775-3e2e-45b6-a2d1-d0d3d78f9e4c",
+        "resourceVersion": "19867",
+        "generation": 3,
+        "creationTimestamp": "2022-03-28T05:06:59Z",
+        "labels": {
+          "k8s-app": "kube-dns"
+        },
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1"
+        },
+        "managedFields": [
+          {
+            "manager": "Go-http-client",
+            "operation": "Update",
+            "apiVersion": "apps/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:spec": {
+                "f:replicas": {}
+              }
+            },
+            "subresource": "scale"
+          },
+          {
+            "manager": "Go-http-client",
+            "operation": "Update",
+            "apiVersion": "apps/v1",
+            "time": "2022-03-28T05:06:59Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:labels": {
+                  ".": {},
+                  "f:k8s-app": {}
+                }
+              },
+              "f:spec": {
+                "f:progressDeadlineSeconds": {},
+                "f:revisionHistoryLimit": {},
+                "f:selector": {},
+                "f:strategy": {
+                  "f:rollingUpdate": {
+                    ".": {},
+                    "f:maxSurge": {},
+                    "f:maxUnavailable": {}
+                  },
+                  "f:type": {}
+                },
+                "f:template": {
+                  "f:metadata": {
+                    "f:labels": {
+                      ".": {},
+                      "f:k8s-app": {}
+                    }
+                  },
+                  "f:spec": {
+                    "f:containers": {
+                      "k:{\"name\":\"coredns\"}": {
+                        ".": {},
+                        "f:args": {},
+                        "f:image": {},
+                        "f:imagePullPolicy": {},
+                        "f:livenessProbe": {
+                          ".": {},
+                          "f:failureThreshold": {},
+                          "f:httpGet": {
+                            ".": {},
+                            "f:path": {},
+                            "f:port": {},
+                            "f:scheme": {}
+                          },
+                          "f:initialDelaySeconds": {},
+                          "f:periodSeconds": {},
+                          "f:successThreshold": {},
+                          "f:timeoutSeconds": {}
+                        },
+                        "f:name": {},
+                        "f:ports": {
+                          ".": {},
+                          "k:{\"containerPort\":53,\"protocol\":\"TCP\"}": {
+                            ".": {},
+                            "f:containerPort": {},
+                            "f:name": {},
+                            "f:protocol": {}
+                          },
+                          "k:{\"containerPort\":53,\"protocol\":\"UDP\"}": {
+                            ".": {},
+                            "f:containerPort": {},
+                            "f:name": {},
+                            "f:protocol": {}
+                          },
+                          "k:{\"containerPort\":9153,\"protocol\":\"TCP\"}": {
+                            ".": {},
+                            "f:containerPort": {},
+                            "f:name": {},
+                            "f:protocol": {}
+                          }
+                        },
+                        "f:readinessProbe": {
+                          ".": {},
+                          "f:failureThreshold": {},
+                          "f:httpGet": {
+                            ".": {},
+                            "f:path": {},
+                            "f:port": {},
+                            "f:scheme": {}
+                          },
+                          "f:periodSeconds": {},
+                          "f:successThreshold": {},
+                          "f:timeoutSeconds": {}
+                        },
+                        "f:resources": {
+                          ".": {},
+                          "f:limits": {
+                            ".": {},
+                            "f:memory": {}
+                          },
+                          "f:requests": {
+                            ".": {},
+                            "f:cpu": {},
+                            "f:memory": {}
+                          }
+                        },
+                        "f:securityContext": {
+                          ".": {},
+                          "f:allowPrivilegeEscalation": {},
+                          "f:capabilities": {
+                            ".": {},
+                            "f:add": {},
+                            "f:drop": {}
+                          },
+                          "f:readOnlyRootFilesystem": {}
+                        },
+                        "f:terminationMessagePath": {},
+                        "f:terminationMessagePolicy": {},
+                        "f:volumeMounts": {
+                          ".": {},
+                          "k:{\"mountPath\":\"/etc/coredns\"}": {
+                            ".": {},
+                            "f:mountPath": {},
+                            "f:name": {},
+                            "f:readOnly": {}
+                          }
+                        }
+                      }
+                    },
+                    "f:dnsPolicy": {},
+                    "f:nodeSelector": {},
+                    "f:priorityClassName": {},
+                    "f:restartPolicy": {},
+                    "f:schedulerName": {},
+                    "f:securityContext": {},
+                    "f:serviceAccount": {},
+                    "f:serviceAccountName": {},
+                    "f:terminationGracePeriodSeconds": {},
+                    "f:tolerations": {},
+                    "f:volumes": {
+                      ".": {},
+                      "k:{\"name\":\"config-volume\"}": {
+                        ".": {},
+                        "f:configMap": {
+                          ".": {},
+                          "f:defaultMode": {},
+                          "f:items": {},
+                          "f:name": {}
+                        },
+                        "f:name": {}
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "manager": "kube-controller-manager",
+            "operation": "Update",
+            "apiVersion": "apps/v1",
+            "time": "2022-03-28T12:46:52Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  ".": {},
+                  "f:deployment.kubernetes.io/revision": {}
+                }
+              },
+              "f:status": {
+                "f:availableReplicas": {},
+                "f:conditions": {
+                  ".": {},
+                  "k:{\"type\":\"Available\"}": {
+                    ".": {},
+                    "f:lastTransitionTime": {},
+                    "f:lastUpdateTime": {},
+                    "f:message": {},
+                    "f:reason": {},
+                    "f:status": {},
+                    "f:type": {}
+                  },
+                  "k:{\"type\":\"Progressing\"}": {
+                    ".": {},
+                    "f:lastTransitionTime": {},
+                    "f:lastUpdateTime": {},
+                    "f:message": {},
+                    "f:reason": {},
+                    "f:status": {},
+                    "f:type": {}
+                  }
+                },
+                "f:observedGeneration": {},
+                "f:readyReplicas": {},
+                "f:replicas": {},
+                "f:updatedReplicas": {}
+              }
+            },
+            "subresource": "status"
+          }
+        ]
+      },
+      "spec": {
+        "replicas": 1,
+        "selector": {
+          "matchLabels": {
+            "k8s-app": "kube-dns"
+          }
+        },
+        "template": {
+          "metadata": {
+            "creationTimestamp": null,
+            "labels": {
+              "k8s-app": "kube-dns"
+            }
+          },
+          "spec": {
+            "volumes": [
+              {
+                "name": "config-volume",
+                "configMap": {
+                  "name": "coredns",
+                  "items": [
+                    {
+                      "key": "Corefile",
+                      "path": "Corefile"
+                    }
+                  ],
+                  "defaultMode": 420
+                }
+              }
+            ],
+            "containers": [
+              {
+                "name": "coredns",
+                "image": "k8s.gcr.io/coredns/coredns:v1.8.6",
+                "args": [
+                  "-conf",
+                  "/etc/coredns/Corefile"
+                ],
+                "ports": [
+                  {
+                    "name": "dns",
+                    "containerPort": 53,
+                    "protocol": "UDP"
+                  },
+                  {
+                    "name": "dns-tcp",
+                    "containerPort": 53,
+                    "protocol": "TCP"
+                  },
+                  {
+                    "name": "metrics",
+                    "containerPort": 9153,
+                    "protocol": "TCP"
+                  }
+                ],
+                "resources": {
+                  "limits": {
+                    "memory": "170Mi"
+                  },
+                  "requests": {
+                    "cpu": "100m",
+                    "memory": "70Mi"
+                  }
+                },
+                "volumeMounts": [
+                  {
+                    "name": "config-volume",
+                    "readOnly": true,
+                    "mountPath": "/etc/coredns"
+                  }
+                ],
+                "livenessProbe": {
+                  "httpGet": {
+                    "path": "/health",
+                    "port": 8080,
+                    "scheme": "HTTP"
+                  },
+                  "initialDelaySeconds": 60,
+                  "timeoutSeconds": 5,
+                  "periodSeconds": 10,
+                  "successThreshold": 1,
+                  "failureThreshold": 5
+                },
+                "readinessProbe": {
+                  "httpGet": {
+                    "path": "/ready",
+                    "port": 8181,
+                    "scheme": "HTTP"
+                  },
+                  "timeoutSeconds": 1,
+                  "periodSeconds": 10,
+                  "successThreshold": 1,
+                  "failureThreshold": 3
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "imagePullPolicy": "IfNotPresent",
+                "securityContext": {
+                  "capabilities": {
+                    "add": [
+                      "NET_BIND_SERVICE"
+                    ],
+                    "drop": [
+                      "all"
+                    ]
+                  },
+                  "readOnlyRootFilesystem": true,
+                  "allowPrivilegeEscalation": false
+                }
+              }
+            ],
+            "restartPolicy": "Always",
+            "terminationGracePeriodSeconds": 30,
+            "dnsPolicy": "Default",
+            "nodeSelector": {
+              "kubernetes.io/os": "linux"
+            },
+            "serviceAccountName": "coredns",
+            "serviceAccount": "coredns",
+            "securityContext": {},
+            "schedulerName": "default-scheduler",
+            "tolerations": [
+              {
+                "key": "CriticalAddonsOnly",
+                "operator": "Exists"
+              },
+              {
+                "key": "node-role.kubernetes.io/master",
+                "effect": "NoSchedule"
+              },
+              {
+                "key": "node-role.kubernetes.io/control-plane",
+                "effect": "NoSchedule"
+              }
+            ],
+            "priorityClassName": "system-cluster-critical"
+          }
+        },
+        "strategy": {
+          "type": "RollingUpdate",
+          "rollingUpdate": {
+            "maxUnavailable": 1,
+            "maxSurge": "25%"
+          }
+        },
+        "revisionHistoryLimit": 10,
+        "progressDeadlineSeconds": 600
+      },
+      "status": {
+        "observedGeneration": 3,
+        "replicas": 1,
+        "updatedReplicas": 1,
+        "readyReplicas": 1,
+        "availableReplicas": 1,
+        "conditions": [
+          {
+            "type": "Available",
+            "status": "True",
+            "lastUpdateTime": "2022-03-28T05:07:14Z",
+            "lastTransitionTime": "2022-03-28T05:07:14Z",
+            "reason": "MinimumReplicasAvailable",
+            "message": "Deployment has minimum availability."
+          },
+          {
+            "type": "Progressing",
+            "status": "True",
+            "lastUpdateTime": "2022-03-28T05:07:16Z",
+            "lastTransitionTime": "2022-03-28T05:07:14Z",
+            "reason": "NewReplicaSetAvailable",
+            "message": "ReplicaSet \"coredns-64897985d\" has successfully progressed."
+          }
+        ]
+      }
+    }
+  ]
+}
