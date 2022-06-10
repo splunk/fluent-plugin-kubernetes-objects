@@ -170,7 +170,7 @@ module Fluent::Plugin
       }
 
       auth_options = {}
-      auth_options[:bearer_token] = File.read(@bearer_token_file) if @bearer_token_file
+      auth_options[:bearer_token_file] = @bearer_token_file
 
       @client = Kubeclient::Client.new(
         @kubernetes_url, @api_version,
