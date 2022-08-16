@@ -6,12 +6,11 @@ source 'https://rubygems.org'
 gem "fluentd", ">= 1.14.2" 
 gem "fluent-plugin-prometheus", ">= 2.0"
 gem "fluent-plugin-record-modifier", "= 2.1.0"
-gem "fluent-plugin-kubernetes_metadata_filter", ">= 2.9"
 gem "fluent-plugin-jq", "= 0.5.1"
 gem "oj", "= 3.10.18"
 gem 'multi_json', '>= 1.14.1'
 gem 'bigdecimal', '>= 2.0.0'
-gem 'kubeclient', '>= 4.9.3'
+gem 'kubeclient', git: 'https://github.com/splunk/kubeclient.git', ref: '955ec5b'
 gem 'http_parser.rb', '>= 0.5.3'
 gem 'rack', '>= 2.2.3.1'
 
