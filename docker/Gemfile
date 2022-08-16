@@ -3,17 +3,17 @@ source 'https://rubygems.org'
 # This is separate gemfile for building docker image that has all plugins 
 # for kubernetes log collection agent
 # List all required gems here and install via bundler to resolve dependencies
-gem "fluentd", ">= 1.14.2" 
+gem "fluentd", ">= 1.15" 
 gem "fluent-plugin-prometheus", ">= 2.0"
 gem "fluent-plugin-record-modifier", "= 2.1.0"
 gem "fluent-plugin-jq", "= 0.5.1"
 gem "oj", "= 3.10.18"
-gem 'multi_json', '>= 1.14.1'
+gem 'multi_json', '~> 1.14'
 gem 'bigdecimal', '>= 2.0.0'
 gem 'kubeclient', git: 'https://github.com/splunk/kubeclient.git', ref: '955ec5b'
 gem 'http_parser.rb', '>= 0.5.3'
 gem 'rack', '>= 2.2.3.1'
 
-gem "fluent-plugin-splunk-hec", ">= 1.2.5"
+gem "fluent-plugin-splunk-hec", "= 1.3.0"
 
 gem 'fluent-plugin-kubernetes-objects', path: 'gem/'
