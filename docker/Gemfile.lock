@@ -1,4 +1,18 @@
 GIT
+  remote: https://github.com/splunk/fluent-plugin-splunk-hec
+  revision: 446d95d63acf4d6e54124e2a4b80f7c2e14414ed
+  ref: 446d95d
+  specs:
+    fluent-plugin-splunk-hec (1.3.1)
+      fluentd (>= 1.5)
+      json-jwt (~> 1.15.0)
+      multi_json (~> 1.13)
+      net-http-persistent (~> 4.0)
+      openid_connect (~> 1.1.8)
+      prometheus-client (>= 2.1.0)
+      rack-oauth2 (~> 1.19)
+
+GIT
   remote: https://github.com/splunk/kubeclient.git
   revision: 955ec5b62f64b6065b25a7c0c76467e8b6badf17
   ref: 955ec5b
@@ -12,7 +26,7 @@ GIT
 PATH
   remote: gem
   specs:
-    fluent-plugin-kubernetes-objects (1.2.0)
+    fluent-plugin-kubernetes-objects (1.2.1)
       fluentd (>= 1.9.1)
       http_parser.rb (= 0.8.0)
       kubeclient (~> 4.9.3)
@@ -20,9 +34,9 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (7.0.3.1)
-      activesupport (= 7.0.3.1)
-    activesupport (7.0.3.1)
+    activemodel (7.0.4)
+      activesupport (= 7.0.4)
+    activesupport (7.0.4)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
@@ -32,12 +46,18 @@ GEM
     aes_key_wrap (1.1.0)
     attr_required (1.0.1)
     bigdecimal (3.0.2)
-    bindata (2.4.10)
+    bindata (2.4.14)
     concurrent-ruby (1.1.10)
-    connection_pool (2.2.5)
+    connection_pool (2.3.0)
     cool.io (1.7.1)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    faraday (2.7.1)
+      faraday-net_http (>= 2.0, < 3.1)
+      ruby2_keywords (>= 0.0.4)
+    faraday-follow_redirects (0.3.0)
+      faraday (>= 1, < 3)
+    faraday-net_http (3.0.2)
     ffi (1.15.5)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
@@ -50,12 +70,6 @@ GEM
       prometheus-client (>= 2.1.0)
     fluent-plugin-record-modifier (2.1.0)
       fluentd (>= 1.0, < 2)
-    fluent-plugin-splunk-hec (1.3.0)
-      fluentd (>= 1.5)
-      multi_json (~> 1.13)
-      net-http-persistent (~> 4.0)
-      openid_connect (~> 1.1.8)
-      prometheus-client (>= 2.1.0)
     fluentd (1.15.3)
       bundler
       cool.io (>= 1.4.5, < 2.0.0)
@@ -83,7 +97,7 @@ GEM
     httpclient (2.8.3)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
-    json-jwt (1.15.2)
+    json-jwt (1.15.3)
       activesupport (>= 4.2)
       aes_key_wrap
       bindata
@@ -96,7 +110,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2022.0105)
     mini_mime (1.1.2)
-    minitest (5.16.2)
+    minitest (5.16.3)
     msgpack (1.6.0)
     multi_json (1.15.0)
     net-http-persistent (4.0.1)
@@ -116,7 +130,7 @@ GEM
     prometheus-client (4.0.0)
     public_suffix (4.0.7)
     rack (3.0.1)
-    rack-oauth2 (1.21.2)
+    rack-oauth2 (1.21.3)
       activesupport
       attr_required
       httpclient
@@ -129,14 +143,16 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    ruby2_keywords (0.0.5)
     serverengine (2.3.0)
       sigdump (~> 0.2.2)
     sigdump (0.2.4)
     strptime (0.2.5)
-    swd (1.3.0)
+    swd (2.0.2)
       activesupport (>= 3)
       attr_required (>= 0.0.5)
-      httpclient (>= 2.4)
+      faraday (~> 2.0)
+      faraday-follow_redirects
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     tzinfo-data (1.2022.6)
@@ -150,9 +166,10 @@ GEM
     validate_url (1.0.15)
       activemodel (>= 3.0.0)
       public_suffix
-    webfinger (1.2.0)
+    webfinger (2.1.2)
       activesupport
-      httpclient (>= 2.4)
+      faraday (~> 2.0)
+      faraday-follow_redirects
     webrick (1.7.0)
     yajl-ruby (1.4.3)
 
@@ -165,7 +182,7 @@ DEPENDENCIES
   fluent-plugin-kubernetes-objects!
   fluent-plugin-prometheus (>= 2.0)
   fluent-plugin-record-modifier (= 2.1.0)
-  fluent-plugin-splunk-hec (= 1.3.0)
+  fluent-plugin-splunk-hec!
   fluentd (>= 1.15)
   http_parser.rb (>= 0.5.3)
   kubeclient!
