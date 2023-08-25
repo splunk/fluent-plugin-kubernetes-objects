@@ -1,4 +1,4 @@
-FROM ruby:2.7.4-buster as builder
+FROM ruby:2.7.7-buster as builder
 
 ADD ./ /app/
 WORKDIR /app
