@@ -1,10 +1,15 @@
 name: CI Build Test
 
 on:
+  workflow_call:
   pull_request:
     branches-ignore:
       - /^release\/.*/
       - main
+
+permissions:
+  checks: write
+  pull-requests: write
 
 jobs:
   build:
@@ -17,7 +22,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-          ruby-version: 2.6
+          ruby-version: 3.1
 
       - name: Install dependencies
         run: |
@@ -25,7 +30,7 @@ jobs:
 
       - name: Builder
         run: |
-          rake build -t -v
+          bundle exec rake build -t -v
           cp -R pkg /tmp
 
       - name: Cache pkg
@@ -168,8 +173,8 @@ jobs:
 
       - name: Deploy log generator
         run: |
-          cd /opt/splunk-connect-for-kubernetes
-          kubectl apply -f test/test_setup.yaml
+          # cd /opt/splunk-connect-for-kubernetes
+          kubectl apply -f ci_scripts/test.yaml
           sleep 60
 
       - uses: actions/setup-python@v2
