@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -e
+sudo gem update --system
 gem install bundler
 bundle update --bundler
 bundle install
