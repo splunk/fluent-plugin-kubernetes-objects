@@ -32,5 +32,5 @@ kubectl get pod
 PODS=$((MINIKUBE_NODE_COUNTS*2+2+1))
 until kubectl get pod | grep Running | [[ $(wc -l) == $PODS ]]; do
    kubectl get pod
-   sleep 3;
+   sleep 2;
 done
