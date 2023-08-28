@@ -20,9 +20,9 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (7.0.4.3)
-      activesupport (= 7.0.4.3)
-    activesupport (7.0.4.3)
+    activemodel (7.0.7.2)
+      activesupport (= 7.0.7.2)
+    activesupport (7.0.7.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
@@ -33,9 +33,11 @@ GEM
     attr_required (1.0.1)
     bigdecimal (3.0.2)
     bindata (2.4.14)
+    cgi (0.3.6)
     concurrent-ruby (1.1.10)
     connection_pool (2.3.0)
     cool.io (1.7.1)
+    date (3.3.3)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     faraday (2.7.1)
@@ -123,7 +125,7 @@ GEM
       webfinger (>= 1.0.1)
     prometheus-client (4.0.0)
     public_suffix (4.0.7)
-    rack (3.0.6.1)
+    rack (3.0.8)
     rack-oauth2 (1.21.3)
       activesupport
       attr_required
@@ -172,6 +174,8 @@ PLATFORMS
 
 DEPENDENCIES
   bigdecimal (>= 2.0.0)
+  cgi (~> 0.3.6)
+  date (~> 3.3.3)
   fluent-plugin-jq (= 0.5.1)
   fluent-plugin-kubernetes-objects!
   fluent-plugin-prometheus (>= 2.0)
@@ -185,4 +189,4 @@ DEPENDENCIES
   rack (>= 3.0.0)
 
 BUNDLED WITH
-   2.1.4
+  2.3.11
