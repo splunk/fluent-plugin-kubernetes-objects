@@ -1,3 +1,19 @@
+
+---
+
+> :warning:&ensp;**DEPRECATION NOTICE**  
+As of June 24th, 2025:
+> (Latest Release 1.2.3).
+> - Timeline:
+>   - ~ 60 days for GitHub Code Archive -> https://github.com/splunk/fluent-plugin-kubernetes-objects
+>   - ~ 30 days for DockerHub Image Removal -> https://hub.docker.com/repository/docker/splunk/kube-objects/general
+> - Maintenance:
+>   - Anyone actively using this code please Fork it.
+>   - Anyone intererested in maintaining the Repository, raise a Pull Request for CODEOWNERS.
+>     - We will then proceed to review the request internally.
+
+---
+
 # End of Support
 
 **Important:** The fluent-plugin-kubernetes-objects will reach End of Support on January 1, 2024. After that date, this repository will no longer receive updates from Splunk and will no longer be supported by Splunk. Until then, only critical security fixes and bug fixes will be provided.
